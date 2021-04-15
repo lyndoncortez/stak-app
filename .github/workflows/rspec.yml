@@ -1,56 +1,49 @@
-env:
-  RUBY_VERSION: 3.0
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres
-  POSTGRES_DB: postgres
+name: RSpec
+on: [push, pull_request]
 
-name: Rails tests
-on: [push,pull_request]
 jobs:
-  rubocop-test:
-    name: Rubocop
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-      - name: Install Rubocop
-        run: gem install rubocop
-      - name: Check code
-        run: rubocop
-  rspec-test:
-    name: RSpec
-    needs: rubocop-test
+  test:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:latest
-        ports:
-        - 5432:5432
+        image: postgres
+        ports: ['5432:5432']
         env:
-          POSTGRES_USER: ${{ env.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          POSTGRES_PASSWORD: 'test'
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-      - name: Install postgres client
-        run: sudo apt-get install libpq-dev
-      - name: Install dependencies
-        run: |
-          gem install bundler
-          bundler install
-      - name: Create database
-        run: |
-          bundler exec rails db:create RAILS_ENV=test
-          bundler exec rails db:migrate RAILS_ENV=test
-      - name: Run tests
-        run: bundler exec rake
-      - name: Upload coverage results    
-        uses: actions/upload-artifact@master
-        if: always()
-        with:
-          name: coverage-report
-          path: coverage
+    - uses: actions/checkout@v2
+
+    - name: Setup Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7.2
+
+    - name: Install dependencies
+      run: |
+        bundle install
+    - name: Setup Database
+      run: |
+        cp config/database.yml.sample config/database.yml
+        yarn install --check-files
+        bundle exec rake db:create
+        bundle exec rake db:schema:load
+      env:
+        DATABASE_HOST: 127.0.0.1
+        DATABASE_USERNAME: 'postgres'
+        DATABASE_PASSWORD: 'test'
+
+    - name: Run Rubocop
+      run: bundle exec rubocop
+
+    - name: Run Tests
+      run: bundle exec rspec
+      env:
+        DATABASE_HOST: 127.0.0.1
+        DATABASE_USERNAME: 'postgres'
+        DATABASE_PASSWORD: 'test'
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
