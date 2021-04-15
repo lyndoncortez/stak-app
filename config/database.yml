@@ -60,7 +60,8 @@ test:
   # database: stak_app_test
   host: localhost
   username: postgres
-  database: rails-github-action_test
+  password: <%= ENV['STAK_APP_DATABASE_PASSWORD'] %>
+  database: stak_app_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
