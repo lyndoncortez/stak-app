@@ -57,10 +57,6 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  # database: stak_app_test
-  host: localhost
-  username: postgres
-  password: <%= ENV['STAK_APP_DATABASE_PASSWORD'] %>
   database: stak_app_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
