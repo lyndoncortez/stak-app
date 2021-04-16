@@ -1,0 +1,73 @@
+@import "~bootstrap/scss/bootstrap";
+@import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap);
+
+$main-color: rgb(75, 224, 75);
+
+
+body {
+  font-family: "Quicksand", serif;
+  font-weight: 400;
+}
+
+
+header {
+  font-weight: 500;
+}
+
+.drop-login {
+  min-width: 0 !important;
+}
+
+footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height:50px;
+  background:#ccc;
+}
+
+h1, .navbar-brand {
+  font-weight: 700;
+}
+
+.hero-main {
+  font-size: 3rem;
+}
+
+.hero-text {
+  font-size: 20px!important;
+}
+
+.hero-img {
+  margin-left: 65px;
+  height: 600px;
+}
+
+.blob-img {
+  position: absolute;
+  padding-right: 0 !important;
+  top: 0;
+  left: 0;
+  z-index: -1000;
+}
+
+i {
+  margin-left: 5px;
+  color: $main-color;
+}
+
+.btn-hero {
+  background-color: $main-color;
+  border-color: $main-color;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn-header {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+
+
