@@ -11,18 +11,19 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="d-flex h-100">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
-      <div class="container d-flex h-100">
+  <body class=" d-flex h-100">
+      
         <%= render 'layouts/header' %>
         <% if user_signed_in? %>  
-          <%= yield %>
+          <div class="container h-100">
+            <%= yield %>
+          </div>
         <% else %>
-          <%= render 'layouts/hero' %>
+          <div class="container d-flex mx-auto h-100">
+            <%= render 'layouts/hero' %>
+          </div>
         <% end %>
-      </div>
+      
     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
   </body>
 </html>

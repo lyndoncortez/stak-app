@@ -1,1 +1,40 @@
-<h1>Hello Admin!</h1>
+<div class="d-flex flex-column dashboard">
+  <h1>Hello admin!</h1>
+  <hr>
+  <div class="row justify-content-md-center">
+    <div class="col-12 col-sm-4 col-xl-4">
+      <div class="card boreder-light shadow-sm">
+        <div class="card-body">
+          <div class="row d-block d-xl-flex align-items-center">
+            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+                <i class="fas fa-user-friends"></i>
+              <div class="d-sm-none">
+                <h2 class="h5">Customers</h2>
+                <h3 class="mb-1">345,678</h3>
+              </div>
+            </div>
+            <div class="col-12 col-xl-7 px-xl-0">
+              <div class="d-none d-sm-block">
+                <h2 class="h5">Users</h2>
+                <h3 class="mb-1"><%= User.count %></h3>
+              </div>
+              <small>As of today, <%= Date.today %></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-4 col-xl-4">
+      <div class="card boreder-light shadow-sm">
+        <div class="card-body">
+          <h3>All Users</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-4 col-xl-4">
+      <div class="card boreder-light shadow-sm">
+        <div class="card-body">
+          <h3>All Users</h3>
+        </div>
+      </div>
+    </div>
