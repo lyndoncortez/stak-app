@@ -1,40 +1,100 @@
+<% @user_admin = User.where(type: "Admin") %>
+<% @user_broker = User.where(type: "Broker") %>
+<% @user_buyer = User.where(type: "Buyer") %>
+
 <div class="d-flex flex-column dashboard">
-  <h1>Hello admin!</h1>
-  <hr>
-  <div class="row justify-content-md-center">
+  <h1>Dashboard</h1>
+  <div class="row justify-content-md-center mt-1 px-3 pt-1 g-5">
     <div class="col-12 col-sm-4 col-xl-4">
-      <div class="card boreder-light shadow-sm">
+      <div class="card border-light shadow-sm">
         <div class="card-body">
           <div class="row d-block d-xl-flex align-items-center">
             <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+              <div class="icon-shape icon-shape-primary me-4 me-sm-0">
                 <i class="fas fa-user-friends"></i>
+              </div>
               <div class="d-sm-none">
-                <h2 class="h5">Customers</h2>
-                <h3 class="mb-1">345,678</h3>
+                <h5>Users</h5>
+                <h3 class="mb-1"><%= User.count %></h3>
               </div>
             </div>
             <div class="col-12 col-xl-7 px-xl-0">
               <div class="d-none d-sm-block">
-                <h2 class="h5">Users</h2>
+                <h5>Users</h5>
                 <h3 class="mb-1"><%= User.count %></h3>
               </div>
               <small>As of today, <%= Date.today %></small>
+              <div class="small mt-2">
+                <span class="fas fa-angle-up text-admin-success"></span> 
+                <span class="text-admin-success fw-bold">0.1%</span> 
+                Since last month
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-12 col-sm-4 col-xl-4">
-      <div class="card boreder-light shadow-sm">
+      <div class="card border-light shadow-sm">
         <div class="card-body">
-          <h3>All Users</h3>
+          <div class="row d-block d-xl-flex align-items-center">
+            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+              <div class="icon-shape icon-shape-secondary me-4 me-sm-0">
+                <i class="fas fa-cash-register"></i>
+              </div>
+              <div class="d-sm-none">
+                <h5>Transactions</h5>
+                <h3 class="mb-1">5</h3>
+              </div>
+            </div>
+            <div class="col-12 col-xl-7 px-xl-0">
+              <div class="d-none d-sm-block">
+                <h5>Transactions</h5>
+                <h3 class="mb-1">5</h3>
+              </div>
+              <small>This month</small>
+              <div class="small mt-2">
+                <span class="fas fa-angle-up text-admin-success"></span> 
+                <span class="text-admin-success fw-bold">28.2%</span> 
+                Since last month
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <div class="col-12 col-sm-4 col-xl-4">
-      <div class="card boreder-light shadow-sm">
+      <div class="card border-light shadow-sm">
         <div class="card-body">
-          <h3>All Users</h3>
+          <div class="row d-block d-xl-flex align-items-center">
+            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+              <div class="icon-shape icon-shape-info me-4 me-sm-0">
+                <i class="fas fa-chart-pie"></i>
+              </div>
+              <div class="d-sm-none">
+                <h5>Pending Approval</h5>
+              </div>
+            </div>
+            <div class="col-12 col-xl-7 px-xl-0">
+              <div class="d-none d-sm-block">
+                <h5>Pending</h5>
+              </div>
+              <h6 class="text-secondary admin-text">
+                <span class="icon w-20 icon-xs icon-secondary"><i class="fas fa-user-shield"></i></span> 
+                Admin <strong><%= @user_admin.count %></strong>
+              </h6>
+              <h6 class="text-secondary admin-text">
+                <span class="icon w-20 icon-xs icon-secondary"><i class="fas fa-business-time"></i></span> 
+                Broker <strong><%= @user_broker.count %></strong>
+              </h6>
+              <h6 class="text-secondary admin-text">
+                <span class="icon w-20 icon-xs icon-secondary"><i class="fab fa-ello"></i></span> 
+                &nbsp;Buyer <strong><%= @user_buyer.count %></strong>
+              </h6>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</div>

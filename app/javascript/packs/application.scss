@@ -6,6 +6,7 @@ $main-color: rgb(75, 224, 75);
 body {
   font-family: "Quicksand", serif;
   font-weight: 400;
+  background-color: #f9fafb;
 }
 
 header {
@@ -28,6 +29,10 @@ footer {
 h1,
 .navbar-brand {
   font-weight: 700;
+}
+
+h5 {
+  font-weight: 600;
 }
 
 .hero-main {
@@ -80,5 +85,60 @@ i {
 }
 
 .fa-user-friends {
-  font-size: 2.5rem;
+  font-size: 2rem;
+  color: #262b40;
+  margin-left: 0;
+}
+
+.fa-cash-register {
+  font-size: 2rem;
+  color: #f3b773;
+  margin-left: 0;
+}
+
+.fa-chart-pie {
+  font-size: 2rem;
+  color: #069999;
+  margin-left: 0;
+}
+
+.fa-user-shield {
+  color: #262b40;
+}
+
+.fa-business-time {
+  color: #f3b773;
+}
+
+.icon-shape-primary {
+  color: #262b40;
+  background-color: rgba(38, 43, 64, 0.3);
+}
+
+.icon-shape-secondary {
+  color: #f3b773;
+  background-color: rgba(243, 183, 115, 0.3);
+}
+
+.icon-shape-info {
+  color: #53e2cf;
+  background-color: rgba(37, 228, 218, 0.3);
+}
+
+.icon-shape {
+  width: 4.5rem;
+  height: 4.5rem;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem !important;
+}
+
+.admin-text {
+  margin-bottom: 5.7%;
+}
+
+.text-admin-success {
+  color: $main-color;
 }
