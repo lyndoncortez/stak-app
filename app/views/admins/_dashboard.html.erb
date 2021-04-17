@@ -1,6 +1,6 @@
-<% @user_admin = User.where(type: "Admin") %>
-<% @user_broker = User.where(type: "Broker") %>
-<% @user_buyer = User.where(type: "Buyer") %>
+<% @user_admin = User.where(type: "Admin", approved: false) %>
+<% @user_broker = User.where(type: "Broker", approved: false) %>
+<% @user_buyer = User.where(type: "Buyer",  approved: false) %>
 
 <div class="d-flex flex-column dashboard">
   <h1>Dashboard</h1>
