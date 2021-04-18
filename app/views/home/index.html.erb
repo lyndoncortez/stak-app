@@ -1,3 +1,3 @@
 <% if admin_signed_in? %>
-  <%= render 'admins/dashboard' %>
+  <%= render partial: "admins/dashboard", locals: {index: true} %>
 <% end %>

@@ -142,3 +142,29 @@ i {
 .text-admin-success {
   color: $main-color;
 }
+
+.nav-hidden {
+  display: none !important;
+}
+
+.row,
+.row > * {
+  margin-top: 0;
+}
+
+.btn-share {
+  border-top-left-radius: 50px !important;
+  border-bottom-left-radius: 50px !important;
+}
+
+.btn-export {
+  border-top-right-radius: 50px !important;
+  border-bottom-right-radius: 50px !important;
+}
+
+.btn-export,
+.btn-share {
+  font-weight: 400;
+  border: 1.5px solid $main-color;
+  color: $main-color;
+}
