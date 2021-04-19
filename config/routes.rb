@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'admins/index'
   get 'admins/new/user'  => 'admins#new_user',   as: 'admins_new_user'
   post 'admins/new/user' => 'admins#create_user', as: 'admins_create_user'
-  get 'admins/view/user/:id' => 'admins#view_user', as: 'admins_view_user'
+  get 'admins/show/user/:id' => 'admins#show_user', as: 'admins_show_user'
+  get 'admins/edit/user/:id' => 'admins#edit_user', as: 'admins_edit_user'
+  get 'admins/:id/approve'=> 'admins#approve_user', as: 'admins_approve_user'
   get 'admins/pending' => 'admins#pending', as: 'admins_pending'
 end
