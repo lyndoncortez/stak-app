@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post 'admins/new/user' => 'admins#create_user', as: 'admins_create_user'
   get 'admins/show/user/:id' => 'admins#show_user', as: 'admins_show_user'
   get 'admins/edit/user/:id' => 'admins#edit_user', as: 'admins_edit_user'
+  put 'admins/edit/user/:id' => 'admins#update_user', as: 'admins_update_user'
+  delete 'admins/edit/user/:id' => 'admins#cancel_user', as: 'admins_cancel_user'
   get 'admins/:id/approve'=> 'admins#approve_user', as: 'admins_approve_user'
   get 'admins/pending' => 'admins#pending', as: 'admins_pending'
 end

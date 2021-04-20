@@ -209,3 +209,24 @@ i {
   background-color: #dc3545;
   color: #fff;
 }
+
+.edit-card {
+  margin-top: 12% !important;
+}
+
+nav {
+  position: absolute !important;
+}
+
+abbr[title] {
+  text-decoration: none !important;
+  color: red;
+}
+
+.alert-fixed {
+  margin-top: 5%;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+}
