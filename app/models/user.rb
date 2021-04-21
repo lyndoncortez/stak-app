@@ -4,8 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true
-  validates_presence_of :type, :unless => Proc.new {|user| user.type == "Buyer"}
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+
+  validates :name, presence: true, length: { maximum: 20 }
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
+  validates :type, presence: { unless: proc { |user| user.type == 'Buyer' } }
 
   def active_for_authentication?
     super && approved?

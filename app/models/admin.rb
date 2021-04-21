@@ -5,5 +5,5 @@ class Admin < User
     AdminMailer.new_user_waiting_for_approval(email).deliver
   end
 
-  USER_TYPE_OPTIONS = ['Admin', 'Buyer', 'Broker']
+  USER_TYPE_OPTIONS = %w[Admin Buyer Broker].freeze
 end
