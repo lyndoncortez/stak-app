@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:user) do
-    described_class.new(name: 'User Example',
-                                   email: 'user@example.com',
-                                   password: '123456',
-                                   type: 'Admin')
+    described_class.new(name: 'User Example', email: 'user@example.com', password: '123456', type: 'Admin')
   end
 
   it 'is valid with valid attributes' do
