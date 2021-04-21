@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def index
     @admins_pending = User.where(type: 'Admin', approved: false)
     @brokers_pending = User.where(type: 'Broker', approved: false)

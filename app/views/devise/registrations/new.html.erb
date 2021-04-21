@@ -1,7 +1,7 @@
 <div class="form-signin mx-auto mt-5 p-5">
-    <h2 class ="mb-3 fw-normal text-center">Sign up</h2>
+    <h2 class ="mb-3 fw-normal text-center"><%= resource.class.model_name %> Sign up</h2>
 
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <div class="mb-3 d-flex justify-content-center">
             <%= f.input :name,
@@ -14,7 +14,6 @@
         <div class="mb-3 d-flex justify-content-center">
           <%= f.input :email,
                       required: true,
-                      autofocus: true,
                       placeholder: 'Email',
                       label: false,
                       input_html: { autocomplete: "email" }%>

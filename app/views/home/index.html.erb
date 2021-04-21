@@ -1,3 +1,5 @@
 <% if admin_signed_in? %>
   <%= render partial: "admins/dashboard", locals: {index: true} %>
+<% elsif broker_signed_in? %>
+  <%= render partial: "broker_portfolio", locals: {index: true} %>
 <% end %>

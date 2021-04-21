@@ -16,7 +16,7 @@ class AdminsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       redirect_to admins_index_path
-      flash[:notice] = 'User profile successfully created'
+      flash[:notice] = 'User profile successfully created.'
     else
       flash.now[:messages] = @user.errors.full_messages[0]
       render :new_user
@@ -35,7 +35,7 @@ class AdminsController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to admins_index_path
-      flash[:notice] = "#{@user.name} profile successfully updated"
+      flash[:notice] = "#{@user.name} profile successfully updated."
     else
       flash.now[:messages] = @user.errors.full_messages[0]
       render :edit_user
@@ -51,18 +51,18 @@ class AdminsController < ApplicationController
     user.approved = true
     @email = user.email
     if user.save
-      flash[:notice] = "#{user.name} approved"
+      flash[:notice] = "#{user.name} approved."
       AdminMailer.account_approval(@email).deliver_now
     else
-      flash[:alert] = 'User approval failed'
+      flash[:alert] = 'User approval failed.'
     end
-    redirect_to admins_pending_approval_path
+    redirect_to admins_pending_path
   end
 
   def cancel_user
     User.find(params[:id]).destroy
     redirect_to admins_index_path
-    flash[:notice] = 'User successfully cancelled'
+    flash[:notice] = 'User successfully cancelled.'
   end
 
   private

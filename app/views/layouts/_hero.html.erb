@@ -6,10 +6,18 @@
     Sign up and get your first stock for free.
     </span>
     <br>
-    <button class="btn btn-hero btn-lg btn-dark mt-3 rounded-pill text-dark">Sign up</button>
+    <div class="dropdown">
+      <button type="button" class="btn btn-hero btn-lg mt-3 rounded-pill text-dark dropdown-toggle" type="button" id="dropdownSignUpButton" data-bs-toggle="dropdown" aria-expanded="false">
+      Sign up
+    </button>
+    <ul class="dropdown-menu drop-sign" aria-labelledby="dropdownSignUpButton">
+      <li><a class="dropdown-item" href="#">As Buyer</a></li>
+      <li><%= link_to "As Broker", new_broker_registration_path, class:"dropdown-item"%></li>
+    </ul>
+    </div>
   </div>
   <div class="col-6 p-2">
-    <img src=<%=asset_path("hero-1.png")%> class="hero-img"/>
+    <img src=<%= asset_path("hero-1.png") %> class="hero-img"/>
   </div>
-    <img src=<%=asset_path("blob-hero.svg")%> class="blob-img"/>
+    <img src=<%= asset_path("blob-hero.svg") %> class="blob-img"/>
 </div>
