@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root to: "home#index"
+  get 'home/transactions'
+  get 'portfolio/broker' => 'home#broker_portfolio', as: 'home_broker_portfolio'
+  get 'portfolio/broker/stocks' => 'home#broker_show_stocks', as: 'home_broker_show_stocks'
+  get 'portfolio/buyer' => 'home#buyer_portfolio', as: 'home_buyer_portfolio'
+
+  get 'stocks/search'
 
   get 'admins/index'
   get 'admins/new/user'  => 'admins#new_user',   as: 'admins_new_user'

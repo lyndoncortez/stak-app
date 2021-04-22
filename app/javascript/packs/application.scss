@@ -238,3 +238,36 @@ abbr[title] {
 .form-signin {
   margin-top: 7% !important;
 }
+
+.btn-add {
+  box-shadow: 0 0 1px #ccc;
+  -webkit-transition: all 0.1s ease-in-out;
+}
+
+.btn-add:hover {
+  -webkit-transform: scale(1.1);
+}
+
+.icon-shape-success {
+  font-size: 1.25rem;
+  width: 3rem;
+  height: 3rem;
+  color: #02774a;
+  background-color: rgba(9, 226, 45, 0.3);
+}
+
+.icon-shape-quaternary {
+  font-size: 1.25rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+.broker-card {
+  margin-bottom: 3px;
+}
+
+.card-stats {
+  padding-left: 2.4rem;
+  padding-top: 0.5rem;
+  text-decoration: none;
+}
