@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get 'portfolio/broker/stocks' => 'home#broker_show_stocks', as: 'home_broker_show_stocks'
   get 'portfolio/buyer' => 'home#buyer_portfolio', as: 'home_buyer_portfolio'
 
-  get 'stocks/search'
+  post 'stocks/search' => 'stocks#create', as: 'stocks_create'
+  get 'stocks/show/:id' => 'stocks#show', as: 'stocks_show'
 
   get 'admins/index'
   get 'admins/new/user'  => 'admins#new_user',   as: 'admins_new_user'

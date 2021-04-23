@@ -17,6 +17,7 @@ class HomeController < ApplicationController
 
   def broker_portfolio
     @stocks = current_user.stocks
+    @stock = Stock.new
   end
 
   def broker_show_stocks

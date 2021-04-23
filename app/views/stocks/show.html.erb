@@ -1,0 +1,23 @@
+<div class="flex d-flex">
+  <div class="col-6">
+    <h2> <%= @stock.name %> [<%= @stock.symbol.upcase %>]</h2>
+    <h1> <b><%= number_to_currency(@stock.latest_price) %> </b> 
+          <small class="small-stock-price stock-<%=@gain_loss%>"><%= number_to_currency(@stock.change) %><i>(<%= @stock.percent %>)</i></small> 
+    </h1>
+    <p> Price as of: <b><%= @stock.updated_at.httpdate%> </b> </p>
+
+    <br>
+    <% if !(@stock.ohlc_high.nil?)%>
+      High: <%= number_to_currency(@stock.ohlc_high) %> <br>
+    <% end %>
+    <% if !(@stock.ohlc_high.nil?)%>
+      Low: <%= number_to_currency(@stock.ohlc_low) %> <br>
+    <% end %>
+    <% if !(@stock.ohlc_high.nil?)%>
+      Previous Close: <%= number_to_currency(@stock.ohlc_close) %> <br>
+    <% end %>
+    <% if !(@stock.ohlc_high.nil?)%>
+      Open: <%= number_to_currency(@stock.ohlc_open) %><br>
+    <% end %>
+  </div>
+</div>

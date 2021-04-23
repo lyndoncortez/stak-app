@@ -1,11 +1,25 @@
 <div class="d-flex flex-column dashboard">
   <h1><%= current_user.name%>'s Portfolio</h1>
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-2 mb-3 px-3">
-    <%= link_to stocks_search_path, class: "btn btn-dark btn-sm me-2 rounded-pill btn-add" do %>
-      <span class="fas fa-plus me-2"></span> Search Stock
+  <div class="w-50 mt-3 mb-4">
+  <%= form_with method: :post, url: stocks_create_path , local:true do |f| %>
+  <div class=" input-group input-group-sm">
+    <%= f.text_field :symbol, :class => 'form-control search-bar fs-5 ps-3', placeholder: 'Search by stock' %>
+    <span class="input-group-text bg-dark border-dark" id="basic-addon2">
+    <%= f.button :button, :class => 'btn btn-sm' do %>
+      <lord-icon
+        src="https://cdn.lordicon.com/msoeawqm.json"
+        trigger="hover"
+        colors="primary:#ffffff,secondary:#16c72e"
+        stroke="100"
+        scale="64"
+        style="width:32px;height:32px">
+      </lord-icon>
     <% end %>
+    </span>
   </div>
-  <div class="row justify-content-md-center px-3 pt-1 g-5">
+  <% end %>
+</div>
+  <div class="row justify-content-md-center px-1 pt-1 g-5">
     <div class="col-12 col-sm-12 col-xl-4">
       <div class="card border-light shadow-sm">
         <div class="card-body">

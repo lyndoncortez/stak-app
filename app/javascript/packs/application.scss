@@ -271,3 +271,35 @@ abbr[title] {
   padding-top: 0.5rem;
   text-decoration: none;
 }
+
+.card {
+  border: 0.0625rem solid rgba(46, 54, 80, 0.125);
+  border-radius: 1rem;
+}
+
+.border-light {
+  border-color: #f8f9fa !important;
+}
+
+.shadow-sm:hover {
+  box-shadow: 0 0.1rem 0.4rem $main-color !important;
+}
+
+.stocks-price {
+  font-weight: 500 !important;
+  color: $main-color;
+}
+
+.stocks-title {
+  font-weight: 600;
+}
+
+.search-bar {
+  border-top-left-radius: 2rem !important;
+  border-bottom-left-radius: 2rem !important;
+}
+
+.input-group-text {
+  border-top-right-radius: 2rem !important;
+  border-bottom-right-radius: 2rem !important;
+}
