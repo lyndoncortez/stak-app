@@ -303,3 +303,15 @@ abbr[title] {
   border-top-right-radius: 2rem !important;
   border-bottom-right-radius: 2rem !important;
 }
+
+.stock-change {
+  font-weight: 500;
+}
+
+.stock-gain {
+  color: $main-color;
+}
+
+.stock-loss {
+  color: var(--bs-danger);
+}

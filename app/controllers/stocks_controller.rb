@@ -4,7 +4,10 @@ class StocksController < ApplicationController
 
   def create
     @quote = @client.quote(stock_params)
-    @stock = Stock.find_or_create_by(symbol: stock_params, name: @client.company(stock_params).company_name)
+    @company = @client.company(stock_params)
+    @news = @client.news(stock_params)
+    @stock = Stock.find_or_create_by(symbol: stock_params,
+                                    name: @client.company(stock_params).company_name)
     @ohlc = @client.ohlc(stock_params)
 
     if @ohlc.include?('close')
@@ -17,6 +20,12 @@ class StocksController < ApplicationController
     @stock.latest_price = @quote.latest_price
     @stock.change = @quote.change
     @stock.percent = @quote.change_percent_s
+    @stock.wk_high = @quote.week_52_high
+    @stock.wk_low = @quote.week_52_low
+    @stock.volume = @quote.iex_volume
+    @stock.avg_volume = @quote.avg_total_volume
+    @stock.mkt_cap = @quote.market_cap
+    @stock.pe_ratio = @quote.pe_ratio
 
     if @stock.save
       redirect_to stocks_show_path(@stock)
@@ -43,7 +52,7 @@ class StocksController < ApplicationController
     @client = IEX::Api::Client.new(
       publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'],
       secret_token: ENV['IEX_API_SECRET_TOKEN'],
-      endpoint: 'https://sandbox.iexapis.com/v1'
+      endpoint: 'https://sandbox.iexapis.com/stable'
     )
   end
 
