@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post 'stocks/search' => 'stocks#create', as: 'stocks_create'
   get 'stocks/show/:id' => 'stocks#show', as: 'stocks_show'
   get 'stocks/chart' => 'stocks#chart', as: 'stocks_chart'
+  put 'stocks/broker/add/:id' => 'stocks#broker_add', as: 'stocks_broker_add'
 
   get 'admins/index'
   get 'admins/new/user'  => 'admins#new_user',   as: 'admins_new_user'

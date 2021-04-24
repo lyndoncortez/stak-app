@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_24_053759) do
+ActiveRecord::Schema.define(version: 2021_04_24_110252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,10 @@ ActiveRecord::Schema.define(version: 2021_04_24_053759) do
     t.bigint "avg_volume"
     t.bigint "mkt_cap"
     t.decimal "pe_ratio"
+    t.string "logo"
+    t.string "description"
+    t.string "headline"
+    t.string "summary"
   end
 
   create_table "transactions", force: :cascade do |t|

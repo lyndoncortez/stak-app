@@ -22,6 +22,13 @@ class HomeController < ApplicationController
 
   def broker_show_stocks
     @stocks = current_user.stocks
+    @stocks.each do |stock|
+      @gain_loss = if stock.percent.include?('-')
+                     'loss'
+                   else
+                     'gain'
+                   end
+    end
   end
 
   private

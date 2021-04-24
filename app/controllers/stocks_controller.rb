@@ -5,17 +5,18 @@ class StocksController < ApplicationController
   def create
     @quote = @client.quote(stock_params)
     @company = @client.company(stock_params)
-    @news = @client.news(stock_params)
+    @logo = @client.logo(stock_params)
+    # @news = @client.news(stock_params)
     @stock = Stock.find_or_create_by(symbol: stock_params,
                                     name: @client.company(stock_params).company_name)
-    @ohlc = @client.ohlc(stock_params)
+    # @ohlc = @client.ohlc(stock_params)
 
-    if @ohlc.include?('close')
-      @stock.ohlc_close = @ohlc.close.price
-      @stock.ohlc_open = @ohlc.open.price
-      @stock.ohlc_high = @ohlc.high
-      @stock.ohlc_low = @ohlc.low
-    end
+    # if @ohlc.include?('close')
+    #   @stock.ohlc_close = @ohlc.close.price
+    #   @stock.ohlc_open = @ohlc.open.price
+    #   @stock.ohlc_high = @ohlc.high
+    #   @stock.ohlc_low = @ohlc.low
+    # end
 
     @stock.latest_price = @quote.latest_price
     @stock.change = @quote.change
@@ -26,6 +27,8 @@ class StocksController < ApplicationController
     @stock.avg_volume = @quote.avg_total_volume
     @stock.mkt_cap = @quote.market_cap
     @stock.pe_ratio = @quote.pe_ratio
+    @stock.logo = @logo.url
+    @stock.description = @company.description
 
     if @stock.save
       redirect_to stocks_show_path(@stock)
@@ -46,13 +49,20 @@ class StocksController < ApplicationController
                  end
   end
 
+  def broker_add
+    @stock = Stock.find(stock_id_params)
+    @stock.users << current_user
+    @stock.save
+    redirect_to stocks_show_path(@stock)
+  end
+
   private
 
   def fetch_api
     @client = IEX::Api::Client.new(
       publishable_token: ENV['IEX_API_PUBLISHABLE_TOKEN'],
       secret_token: ENV['IEX_API_SECRET_TOKEN'],
-      endpoint: 'https://sandbox.iexapis.com/stable'
+      endpoint: 'https://cloud.iexapis.com/stable'
     )
   end
 

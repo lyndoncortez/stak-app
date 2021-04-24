@@ -24,18 +24,12 @@
     <div class="col">
       <div class="card text-white bg-dark">
         <div class="card-body">
-          <h3 class="card-title stocks-title mb-0"><%= stock.symbol.upcase %> </h3>
-          <small><%= stock.name %> | Common Stock</small>
-          <h5 class="card-text stocks-price mt-3">$132.60</h5>
+          <h3 class="card-title stocks-title mb-0"><a href="<%= stocks_show_path(stock.id) %>" class="stretched-link"></a><%= stock.symbol.upcase %> </h3>
+          <small><%= stock.name %></small>
+          <h5 class="card-text mt-3 fs-4"><%= number_to_currency(stock.latest_price) %></h5>
           <div class="row">
-            <div class="col-6">
-              <small><strong>VOLUME:</strong> <%= stock.avg_30_volume %></small>
-              <small><strong>MARKET CAP:</strong> <%= stock.market_cap %></small><br>
-            </div>
-            <div class="col-6">
-              <small><strong>OPEN PRICE:</strong> <%= stock.open.price %></small><br>
-              <small><strong>HIGH TODAY:</strong> <%= stock.high %></small><br>
-              <small><strong>LOW TODAY:</strong> <%= stock.low %></small>
+            <div class="col">
+              <p class="stock-change stock-<%= @gain_loss %>"><%= number_to_currency(stock.change) %> (<%= stock.percent %>) <i class="fas fa-caret-up"></i></p><br>
             </div>
           </div>
         </div>
