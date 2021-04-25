@@ -27,15 +27,16 @@ class HomeController < ApplicationController
   end
 
   def transactions
-    if current_user.type == "Broker"
+    case current_user.type
+    when 'Broker'
       @transactions = Transaction.where(broker_id: current_user.id)
-      @method = "Sell"
-    elsif current_user.type == "Buyer"
+      @method = 'Sell'
+    when 'Buyer'
       @transactions = current_user.transactions
-      @method = "Buy"
-    elsif  current_user.type == "Admin"
+      @method = 'Buy'
+    when 'Admin'
       @transactions = Transaction.all
-      @method = "Buy"
+      @method = 'Buy'
     end
   end
 
