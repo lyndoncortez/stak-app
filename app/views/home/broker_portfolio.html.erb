@@ -21,8 +21,8 @@
 </div>
   <div class="row justify-content-md-center px-1 pt-1 g-5">
     <div class="col-12 col-sm-12 col-xl-4">
-      <div class="card border-light shadow-sm">
-        <div class="card-body">
+      <div class="card portfolio-card shadow-sm">
+        <div class="card-body ps-4">
           <h2 class="h5"><a href="<%= home_broker_show_stocks_path %>" class="text-dark stretched-link"></a>My Stocks</h2>
           <div class="d-block">
             <div class="d-flex align-items-center pt-3 me-5">
@@ -32,7 +32,7 @@
               </div>
               <div class="d-block">
                 <label class="mb-0">Total Stocks</label>
-                <h4 class="mb-0">15</h4>
+                <h4 class="mb-0 fw-bold"><%= current_user.stocks.count %></h4>
               </div>
             </div>
             <div class="d-flex align-items-center pt-3">
@@ -41,7 +41,7 @@
               </div>
               <div class="d-block">
                 <label class="mb-0">No. of Buyers</label>
-                <h4 class="mb-0">2</h4>
+                <h4 class="mb-0 fw-bold">2</h4>
               </div>
             </div>
           </div>
@@ -49,22 +49,22 @@
       </div>
     </div>
     <div class="col-12 col-sm-12 col-xl-4">
-      <div class="card border-light shadow-sm">
-        <div class="card-body">
-          <h2 class="h5">Transactions</h2>
+      <div class="card portfolio-card shadow-sm">
+        <div class="card-body ps-4">
+          <h2 class="h5"><a href="<%= home_transactions_path %>" class="text-dark stretched-link"></a>Transactions</h2>
           <div class="d-block broker-card">
             <div class="d-flex align-items-center pt-3 me-5">
               <div class="d-block">
                 <div class="h6 fw-normal text-gray mb-2">
                   Total orders
                 </div>
-                <h2 class="h3">452</h2>
+                <h2 class="h3 fw-bold">452</h2>
                 <div class="small mt-2">
                   <span class="fas fa-angle-up text-success"></span>
                   <span class="text-success fw-bold">18.2%</span>
                 </div>
                 <div class="small mt-2">
-                  <span class="fw-light">As of today, <%= Date.today %></span>
+                  <span class="fw-normal">As of today, <%= Date.today %></span>
                 </div>
               </div>
             </div>
@@ -74,27 +74,25 @@
     </div>
     <div class="col-12 col-sm-12 col-xl-4">
       <div class="col-12 px-0 mb-4">
-        <div class="card border-light shadow-sm">
-          <div class="card-body">
+        <div class="card portfolio-card shadow-sm">
+          <div class="card-body ps-4">
             <div class="d-flex align-items-center justify-content-between border-bottom border-light pb-3">
               <div>
                 <h6 class="mb-0">
                   <span class="icon icon-xs me-3">
-                    <span class="fas fa-globe-europe">
-                    </span>
+                    <i class="fab fa-apple"></i>
                   </span>
-                  Global Rank
+                  <%= @apple.symbol %>
                 </h6>
                 <div class="small card-stats">
-                  United States
+                  <%= @apple.change_percent_s %>
                   <span class="icon icon-xs text-success ms-2">
                     <span class="fas fa-angle-up"></span>
                   </span>
                 </div>
               </div>
               <div>
-                <a href="#" class="text-primary fw-bold">#755<span class="fas fa-chart-line ms-2"></span>
-                </a>
+                <span class="fw-bold"><%= number_to_currency(@apple.latest_price) %></span>
               </div>
             </div>
             <div class="d-flex align-items-center justify-content-between border-bottom border-light py-3">

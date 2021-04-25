@@ -1,0 +1,58 @@
+<div class="d-flex flex-column dashboard">
+  <% if !(current_user.type == "Admin") %>
+    <h1>Transactions</h1>
+    <% if admin_signed_in? %>
+      <div class="mt-2">
+        <%= link_to root_path, :class => "mt-3 text-start fs-4" do %>
+          <i class="fas fa-arrow-left text-dark"></i>
+        <% end %>
+      </div>
+    <% elsif current_user.type == "Broker" %>
+      <div class="mt-2">
+        <%= link_to home_broker_portfolio_path, :class => "mt-3 text-start fs-4" do %>
+          <i class="fas fa-arrow-left text-dark"></i>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="mt-2">
+        <%= link_to home_buyer_portfolio_path, :class => "mt-3 text-start fs-4" do %>
+          <i class="fas fa-arrow-left text-dark"></i>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="table-responsive mt-3">
+      <table class="table table-hover mt-3">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Symbol</th>
+            <th scope="col">Side</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+            <th scope="col">Time</th>
+          </tr>
+        </thead>
+        <% @transactions.each_with_index do |transaction, index| %>
+        <tbody>
+          <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <td><%= Stock.find(transaction.stock_id).symbol.upcase %></td>
+            <td><%= @method %></td>
+            <td><%= transaction.quantity %></td>
+            <td>
+              <% if current_user.type == "Broker" %>
+                <%= number_to_currency(transaction.price)%>
+              <% elsif current_user.type == "Buyer" %>
+                <%= transaction.price %>
+              <% end %>
+            </td>
+            <td><%= number_to_currency(transaction.total) %></td>
+            <td><%= transaction.created_at.strftime("%B %d %Y, %l:%M%P") %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+</div>

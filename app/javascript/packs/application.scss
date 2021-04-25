@@ -58,6 +58,9 @@ h5 {
 
 i {
   margin-left: 5px;
+}
+
+.fa-angle-down {
   color: $main-color;
 }
 
@@ -252,8 +255,7 @@ abbr[title] {
   font-size: 1.25rem;
   width: 3rem;
   height: 3rem;
-  color: #02774a;
-  background-color: rgba(9, 226, 45, 0.3);
+  background-color: rgba(53, 110, 233, 0.3);
 }
 
 .icon-shape-quaternary {
@@ -277,12 +279,19 @@ abbr[title] {
   border-radius: 1rem;
 }
 
-.border-light {
-  border-color: #f8f9fa !important;
-}
+.portfolio-card:hover {
+  color: white;
+  border: none;
+  background: linear-gradient(45deg, #3174c2, #73b4ff);
 
-.shadow-sm:hover {
-  box-shadow: 0 0.1rem 0.4rem $main-color !important;
+  .icon-shape-success {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .text-success {
+    color: $main-color !important;
+  }
 }
 
 .stocks-price {
@@ -314,4 +323,28 @@ abbr[title] {
 
 .stock-loss {
   color: var(--bs-danger);
+}
+
+.stocks-card {
+  -webkit-transition: all 0.1s ease-in-out;
+}
+
+.stocks-card:hover {
+  -webkit-transform: scale(1.1);
+}
+
+.bg-c-green {
+  background-image: linear-gradient(to right top, #006c75, #05c97b);
+}
+
+.bg-c-red {
+  background: linear-gradient(45deg, #d82e4a, #e05959);
+}
+
+.broker-dropdown {
+  color: #3174c2;
+}
+
+.show-card {
+  height: 550px !important;
 }

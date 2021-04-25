@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  include StockApi
   before_action :authenticate_user!, except: [:index]
   before_action :broker?, only: [:broker_portfolio]
 
@@ -18,16 +19,23 @@ class HomeController < ApplicationController
   def broker_portfolio
     @stocks = current_user.stocks
     @stock = Stock.new
+    @apple = @client.quote('AAPL')
   end
 
   def broker_show_stocks
     @stocks = current_user.stocks
-    @stocks.each do |stock|
-      @gain_loss = if stock.percent.include?('-')
-                     'loss'
-                   else
-                     'gain'
-                   end
+  end
+
+  def transactions
+    if current_user.type == "Broker"
+      @transactions = Transaction.where(broker_id: current_user.id)
+      @method = "Sell"
+    elsif current_user.type == "Buyer"
+      @transactions = current_user.transactions
+      @method = "Buy"
+    elsif  current_user.type == "Admin"
+      @transactions = Transaction.all
+      @method = "Buy"
     end
   end
 

@@ -1,0 +1,15 @@
+<ul class="navbar-nav me-auto mb-2 mb-md-0">
+  <li class="nav-item dropdown mx-2">
+    <a class="nav-link" aria-current="page" href="<%= home_broker_portfolio_path %>" role="button" aria-expanded="false">Home</a>
+  </li>
+  <li class="nav-item dropdown mx-2">
+    <a class="nav-link" aria-current="page" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Stocks <i class="fas fa-angle-down broker-dropdown"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+        <li><a class="dropdown-item" href="<%= home_broker_show_stocks_path %>">My Stocks</a></li>
+        <li><a class="dropdown-item" href="#">News</a></li>
+    </ul>
+  </li>
+  <li class="nav-item dropdown mx-2">
+    <a class="nav-link" aria-current="page" href="<%= home_transactions_path %>" id="navbarDropdownMenuLink3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Transactions</a>
+  </li>
+</ul>
