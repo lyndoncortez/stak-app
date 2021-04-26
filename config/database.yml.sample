@@ -15,11 +15,16 @@
 # gem 'pg'
 #
 default: &default
+  host: <%= ENV.fetch("DATABASE_HOST") { 'localhost' } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  port: 5432
   adapter: postgresql
   encoding: unicode
+  username: <%= ENV.fetch("DATABASE_USERNAME") { 'postgres' } %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") { 'test' } %>
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  
 
 development:
   <<: *default
@@ -82,5 +87,5 @@ test:
 production:
   <<: *default
   database: stak_app_production
-  username: stak_app
-  password: <%= ENV['STAK_APP_DATABASE_PASSWORD'] %>
+# username: stak_app
+# password: <%= ENV['STAK_APP_DATABASE_PASSWORD'] %>

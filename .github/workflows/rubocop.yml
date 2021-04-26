@@ -1,10 +1,10 @@
 env:
   RUBY_VERSION: 2.7.2
 
-name: Rubocop
+name: Rubocop-RSpec
 on: [push,pull_request]
 jobs:
-  rubocop-test:
+  rubocop-rspec-test:
     name: Rubocop
     runs-on: ubuntu-latest
     steps:
@@ -17,3 +17,22 @@ jobs:
         run: gem install rubocop
       - name: Check code
         run: bundle exec rubocop
+
+      - name: Setup Database
+      run: |
+        cp config/database.yml.sample config/database.yml
+        yarn install --check-files
+        bundle exec rake db:create
+        bundle exec rake db:schema:load
+      env:
+        DATABASE_HOST: 127.0.0.1
+        DATABASE_USERNAME: 'postgres'
+        DATABASE_PASSWORD: 'test'
+
+    - name: Run Tests
+      run: bundle exec rspec
+      env:
+        DATABASE_HOST: 127.0.0.1
+        DATABASE_USERNAME: 'postgres'
+        DATABASE_PASSWORD: 'test'
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
