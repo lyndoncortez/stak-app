@@ -2,6 +2,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap);
 
 $main-color: rgb(75, 224, 75);
+$admin-color: #f7a028;
 
 body {
   font-family: "Quicksand", serif;
@@ -168,8 +169,14 @@ i {
 .btn-export,
 .btn-share {
   font-weight: 400;
-  border: 1.5px solid $main-color;
-  color: $main-color;
+  border: 1.5px solid $admin-color;
+  color: $admin-color;
+}
+
+.btn-export:hover,
+.btn-share:hover {
+  background-color: $admin-color;
+  color: white;
 }
 
 .btn-action {
@@ -245,10 +252,12 @@ abbr[title] {
 .btn-add {
   box-shadow: 0 0 1px #ccc;
   -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 .btn-add:hover {
   -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .icon-shape-success {
@@ -327,10 +336,12 @@ abbr[title] {
 
 .stocks-card {
   -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 .stocks-card:hover {
   -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .bg-c-green {
@@ -341,10 +352,56 @@ abbr[title] {
   background: linear-gradient(45deg, #d82e4a, #e05959);
 }
 
+.admin-dropdown {
+  color: #f7a028;
+}
+
 .broker-dropdown {
   color: #3174c2;
 }
 
 .show-card {
   height: 550px !important;
+}
+
+.add-user-btn {
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.add-user-btn:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.admin-card:hover {
+  background: linear-gradient(45deg, #f7a028, #ffcb80);
+  color: white;
+
+  .text-admin-success {
+    color: #007535;
+  }
+
+  .admin-text {
+    color: white !important;
+  }
+
+  .fa-business-time {
+    color: #049c88;
+  }
+
+  .icon-shape-primary {
+    color: #262b40;
+    background-color: rgba(245, 252, 251, 0.3);
+  }
+
+  .icon-shape-secondary {
+    color: #8d5413;
+    background-color: rgba(68, 37, 1, 0.3);
+  }
+
+  .icon-shape-info {
+    color: #049c88;
+    background-color: rgba(245, 252, 251, 0.3);
+  }
 }

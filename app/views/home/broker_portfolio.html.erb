@@ -76,65 +76,53 @@
       <div class="col-12 px-0 mb-4">
         <div class="card portfolio-card shadow-sm">
           <div class="card-body ps-4">
-            <div class="d-flex align-items-center justify-content-between border-bottom border-light pb-3">
+            <h2 class="h5">Stocks</h2>
+            <div class="d-flex align-items-center justify-content-between border-bottom border-light mt-4">
               <div>
                 <h6 class="mb-0">
                   <span class="icon icon-xs me-3">
-                    <i class="fab fa-apple"></i>
+                    <img src="<%= @apple_logo.url %>" height="30" >
                   </span>
                   <%= @apple.symbol %>
                 </h6>
-                <div class="small card-stats">
-                  <%= @apple.change_percent_s %>
-                  <span class="icon icon-xs text-success ms-2">
-                    <span class="fas fa-angle-up"></span>
-                  </span>
+                <div class="small card-stats text-<%= @apple.change_percent_s.include?('-') ? 'danger' : 'success' %>">
+                  <%= @apple.change_percent_s %><i class="fas fa-caret-<%= @apple.change_percent_s.include?('-') ? 'down' : 'up' %>"></i>
                 </div>
               </div>
               <div>
                 <span class="fw-bold"><%= number_to_currency(@apple.latest_price) %></span>
               </div>
             </div>
-            <div class="d-flex align-items-center justify-content-between border-bottom border-light py-3">
+           <div class="d-flex align-items-center justify-content-between border-bottom border-light pt-3">
               <div>
                 <h6 class="mb-0">
                   <span class="icon icon-xs me-3">
-                    <span class="fas fa-flag-usa"></span>
+                    <img src="<%= @ford_logo.url %>" height="30" >
                   </span>
-                  Country Rank
+                  <%= @ford.symbol %>
                 </h6>
-                <div class="small card-stats">
-                  United States
-                  <span class="icon icon-xs text-success ms-2">
-                    <span class="fas fa-angle-up"></span>
-                  </span>
+                <div class="small card-stats text-<%= @ford.change_percent_s.include?('-') ? 'danger' : 'success' %>">
+                  <%= @ford.change_percent_s %><i class="fas fa-caret-<%= @ford.change_percent_s.include?('-') ? 'down' : 'up' %>"></i>
                 </div>
               </div>
               <div>
-                <a href="#" class="text-primary fw-bold">
-                  #32<span class="fas fa-chart-line ms-2"></span>
-                </a>
+                <span class="fw-bold"><%= number_to_currency(@ford.latest_price) %></span>
               </div>
             </div>
-            <div class="d-flex align-items-center justify-content-between pt-3">
+            <div class="d-flex align-items-center justify-content-between border-bottom border-light pt-3 mb-2">
               <div>
                 <h6 class="mb-0">
                   <span class="icon icon-xs me-3">
-                    <span class="fas fa-folder-open"></span>
+                    <img src="<%= @intel_logo.url %>" height="30" >
                   </span>
-                  Category Rank
+                  <%= @intel.symbol %>
                 </h6>
-                <div class="small card-stats">
-                  United States
-                  <span class="icon icon-xs text-success ms-2">
-                    <span class="fas fa-angle-up"></span>
-                  </span>
+                <div class="small card-stats text-<%= @intel.change_percent_s.include?('-') ? 'danger' : 'success' %>">
+                  <%= @intel.change_percent_s %><i class="fas fa-caret-<%= @intel.change_percent_s.include?('-') ? 'down' : 'up' %>"></i>
                 </div>
               </div>
               <div>
-                <a href="#" class="text-primary fw-bold">
-                  #16<span class="fas fa-chart-line ms-2"></span>
-                </a>
+                <span class="fw-bold"><%= number_to_currency(@intel.latest_price) %></span>
               </div>
             </div>
           </div>

@@ -1,17 +1,17 @@
 <div class="d-flex flex-column dashboard">
   <h1>Dashboard</h1>
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-2 mb-3 px-3">
-    <%= link_to admins_new_user_path, class: "btn btn-dark btn-sm me-2 rounded-pill" do %>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-2 mb-1 px-3">
+    <%= link_to admins_new_user_path, class: "btn btn-dark btn-sm me-2 rounded-pill add-user-btn fw-bold" do %>
       <span class="fas fa-plus me-2"></span> Add User
     <% end %>
     <div class="btn-group">
-      <button type="button" class="btn btn-sm btn-outline-success btn-share">Share</button> 
-      <button type="button" class="btn btn-sm btn-outline-success btn-export">Export</button>
+      <button type="button" class="btn btn-sm btn-share">Share</button> 
+      <button type="button" class="btn btn-sm btn-export">Export</button>
     </div>
   </div>
   <div class="row justify-content-md-center px-3 pt-1 g-5">
     <div class="col-12 col-sm-4 col-xl-4">
-      <div class="card border-light shadow-sm">
+      <div class="card admin-card shadow-sm">
         <div class="card-body">
           <div class="row d-block d-xl-flex align-items-center">
             <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="col-12 col-sm-4 col-xl-4">
-      <div class="card border-light shadow-sm">
+      <div class="card admin-card shadow-sm">
         <div class="card-body">
           <div class="row d-block d-xl-flex align-items-center">
             <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
@@ -48,14 +48,14 @@
                 <i class="fas fa-cash-register"></i>
               </div>
               <div class="d-sm-none">
-                <h5><a href="<%= admins_index_path %>" class="stretched-link"></a>Transactions</h5>
-                <h3 class="mb-1">5</h3>
+                <h5><a href="<%= home_transactions_path %>" class="stretched-link"></a>Transactions</h5>
+                <h3 class="mb-1"><%= @transactions.count %></h3>
               </div>
             </div>
             <div class="col-12 col-xl-7 px-xl-0">
               <div class="d-none d-sm-block">
-                <h5><a href="<%= admins_index_path %>" class="stretched-link"></a>Transactions</h5>
-                <h3 class="mb-1">5</h3>
+                <h5><a href="<%= home_transactions_path  %>" class="stretched-link"></a>Transactions</h5>
+                <h3 class="mb-1"><%= @transactions.count %></h3>
               </div>
               <small>This month</small>
               <div class="small mt-2">
@@ -69,7 +69,7 @@
       </div>
     </div>
     <div class="col-12 col-sm-4 col-xl-4">
-      <div class="card border-light shadow-sm">
+      <div class="card admin-card shadow-sm">
         <div class="card-body">
           <div class="row d-block d-xl-flex align-items-center">
             <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
@@ -77,12 +77,12 @@
                 <i class="fas fa-chart-pie"></i>
               </div>
               <div class="d-sm-none">
-                <h5><a href="<%= admins_pending_path  %>" class="stretched-link"></a>Pending</h5>
+                <h5 class="ms-1"><a href="<%= admins_pending_path  %>" class="stretched-link"></a>Pending</h5>
               </div>
             </div>
             <div class="col-12 col-xl-7 px-xl-0">
               <div class="d-none d-sm-block">
-                <h5><a href="<%= admins_pending_path %>" class="stretched-link"></a>Pending</h5>
+                <h5 class="ms-1"><a href="<%= admins_pending_path %>" class="stretched-link"></a>Pending</h5>
               </div>
               <h6 class="text-secondary admin-text">
                 <span class="icon w-20 icon-xs icon-secondary"><i class="fas fa-user-shield"></i></span> 

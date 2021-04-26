@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   include StockApi
+
   before_action :authenticate_user!, except: [:index]
   before_action :broker?, only: [:broker_portfolio]
 
@@ -8,18 +9,20 @@ class HomeController < ApplicationController
     @brokers_pending = User.where(type: 'Broker', approved: false)
     @buyers_pending = User.where(type: 'Buyer', approved: false)
 
-    case current_user.type
-    when 'Broker'
-      redirect_to home_broker_portfolio_path
-    when 'Buyer'
-      redirect_to home_buyer_portfolio_path
-    end
+    @transactions = Transaction.all
+
+    redirect_to home_broker_portfolio_path if broker_signed_in?
   end
 
   def broker_portfolio
     @stocks = current_user.stocks
     @stock = Stock.new
     @apple = @client.quote('AAPL')
+    @apple_logo = @client.logo('AAPL')
+    @ford = @client.quote('F')
+    @ford_logo = @client.logo('F')
+    @intel = @client.quote('INTC')
+    @intel_logo = @client.logo('INTC')
   end
 
   def broker_show_stocks
@@ -44,5 +47,9 @@ class HomeController < ApplicationController
 
   def broker?
     redirect_to root_path unless current_user.type == 'Broker'
+  end
+
+  def buyer?
+    redirect_to root_path unless current_user.type == 'Buyer'
   end
 end
