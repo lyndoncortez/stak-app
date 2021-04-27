@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :buyers
   devise_for :brokers
   devise_for :admins
   devise_for :users
@@ -7,8 +8,9 @@ Rails.application.routes.draw do
   root to: "home#index"
   get 'home/transactions'
   get 'portfolio/broker' => 'home#broker_portfolio', as: 'home_broker_portfolio'
-  get 'portfolio/broker/stocks' => 'home#broker_show_stocks', as: 'home_broker_show_stocks'
   get 'portfolio/buyer' => 'home#buyer_portfolio', as: 'home_buyer_portfolio'
+  get 'portfolio/broker/stocks' => 'home#broker_show_stocks', as: 'home_broker_show_stocks'
+  get 'portfolio/buyer/stocks' => 'home#buyer_show_stocks', as: 'home_buyer_show_stocks'
 
   post 'stocks/search' => 'stocks#create', as: 'stocks_create'
   get 'stocks/show/:id' => 'stocks#show', as: 'stocks_show'

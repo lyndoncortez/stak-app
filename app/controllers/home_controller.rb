@@ -3,6 +3,7 @@ class HomeController < ApplicationController
 
   before_action :authenticate_user!, except: [:index]
   before_action :broker?, only: [:broker_portfolio]
+  before_action :buyer?, only: [:buyer_portfolio]
 
   def index
     @admins_pending = User.where(type: 'Admin', approved: false)
@@ -11,7 +12,11 @@ class HomeController < ApplicationController
 
     @transactions = Transaction.all
 
-    redirect_to home_broker_portfolio_path if broker_signed_in?
+    if broker_signed_in?
+      redirect_to home_broker_portfolio_path
+    elsif buyer_signed_in?
+      redirect_to home_buyer_portfolio_path
+    end
   end
 
   def broker_portfolio
@@ -23,6 +28,10 @@ class HomeController < ApplicationController
     @ford_logo = @client.logo('F')
     @intel = @client.quote('INTC')
     @intel_logo = @client.logo('INTC')
+  end
+
+  def buyer_portfolio
+    @buyer_stocks = current_user.user_stocks
   end
 
   def broker_show_stocks

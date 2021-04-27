@@ -11,7 +11,7 @@
       Sign up
     </button>
     <ul class="dropdown-menu drop-sign" aria-labelledby="dropdownSignUpButton">
-      <li><a class="dropdown-item" href="#">As Buyer</a></li>
+      <li><%= link_to "As Buyer", new_buyer_registration_path, class:"dropdown-item"%></li>
       <li><%= link_to "As Broker", new_broker_registration_path, class:"dropdown-item"%></li>
     </ul>
     </div>

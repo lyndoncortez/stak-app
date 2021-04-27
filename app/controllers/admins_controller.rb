@@ -2,8 +2,6 @@ class AdminsController < ApplicationController
   before_action :authenticate_user!
   before_action :admin?
 
-  def dashboard; end
-
   def index
     @users = User.all
   end
