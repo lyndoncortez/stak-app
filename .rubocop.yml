@@ -1,4 +1,4 @@
-require: 
+require:
   - rubocop-rails
   - rubocop-rspec
 
@@ -52,4 +52,7 @@ Rails/ApplicationController:
   Enabled: false
 
 Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Rails/InverseOf:
   Enabled: false
