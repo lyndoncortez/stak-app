@@ -1,42 +1,55 @@
-<div class="form-signin mx-auto mt-5 p-5">
-    <h2 class ="mb-3 fw-normal text-center"><%= resource.class.model_name %> Sign up</h2>
-
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <div class="form-inputs">
-        <div class="mb-3 d-flex justify-content-center">
-            <%= f.input :name,
-                        required: true,
-                        autofocus: true,
-                        placeholder: 'Name',
-                        label: false,
-                        input_html: { autocomplete: "name" }%>
-        </div>
-        <div class="mb-3 d-flex justify-content-center">
-          <%= f.input :email,
-                      required: true,
-                      placeholder: 'Email',
-                      label: false,
-                      input_html: { autocomplete: "email" }%>
-        </div>
-        <div class="mb-3 d-flex justify-content-center">
-          <%= f.input :password,
-                      required: true,
-                      placeholder: 'Password',
-                      label: false,
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password" } %>
-        </div>
-        <div class="mb-3 d-flex justify-content-center">
-          <%= f.input :password_confirmation,
-                      required: true,
-                      placeholder: 'Confirm Password',
-                      label: false,
-                      input_html: { autocomplete: "new-password" } %>
-        </div>
-        <div class="form-actions mb-3 mt-3 d-flex justify-content-center">
-          <%= f.button :submit, "Sign up", :class => 'btn btn-sm btn-primary' %>
-        </div>
+<div class="container pt-5 mb-5">
+  <div class="card mt-5 login-card mx-auto">
+    <div class="card-body">
+      <div class="form-signin mx-auto">
+        <h4 class ="mb-4 fw-bold text-center"><%= resource.class.model_name %> Sign up</h4>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <div class="form-inputs">
+            <div class="mb-3 d-flex justify-content-center">
+                <%= f.input :name,
+                            required: true,
+                            autofocus: true,
+                            placeholder: 'Name',
+                            label: false,
+                            input_html: { autocomplete: "name" }%>
+            </div>
+            <div class="mb-3 d-flex justify-content-center">
+              <%= f.input :email,
+                          required: true,
+                          placeholder: 'Email',
+                          label: false,
+                          input_html: { autocomplete: "email" }%>
+            </div>
+            <div class="mb-3 d-flex justify-content-center">
+              <%= f.input :password,
+                          required: true,
+                          placeholder: 'Password',
+                          label: false,
+                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                          input_html: { autocomplete: "new-password" } %>
+            </div>
+            <div class="mb-3 d-flex justify-content-center">
+              <%= f.input :password_confirmation,
+                          required: true,
+                          placeholder: 'Confirm Password',
+                          label: false,
+                          input_html: { autocomplete: "new-password" } %>
+            </div>
+            <div class="form-actions mb-3 mt-3 d-flex justify-content-center">
+              <%= f.button :submit, "Sign up", :class => 'btn btn-md btn-primary fs-6 fw-bold' %>
+            </div>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
       </div>
-    <% end %>
-    <%= render "devise/shared/links" %>
+    </div>
+  </div>
 </div>
+<div class="row mt-5 align-items-center">
+  <% if resource.class.model_name == "Buyer" %>
+    <img src=<%= asset_path("buyer-wave.svg") %> class="wave-img"/>
+  <% elsif resource.class.model_name == "Broker" %>
+    <img src=<%= asset_path("broker-wave.svg") %> class="wave-img"/>
+  <% end %>
+</div>
+

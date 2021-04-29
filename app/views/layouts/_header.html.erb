@@ -14,7 +14,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item dropdown mx-2">
             <a class="nav-link" aria-current="page" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products <i class="fas fa-angle-down"></i></a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+            <ul class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdownMenuLink1">
               <li><a class="dropdown-item" href="#">Stocks & Funds</a></li>
               <li><a class="dropdown-item" href="#">Futures</a></li>
               <li><a class="dropdown-item" href="#">Crypto</a></li>
@@ -22,14 +22,14 @@
           </li>
           <li class="nav-item dropdown mx-2">
             <a class="nav-link" aria-current="page" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Learn <i class="fas fa-angle-down"></i></a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+            <ul class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdownMenuLink2">
               <li><a class="dropdown-item" href="#">Investing basics</a></li>
               <li><a class="dropdown-item" href="#">Blockchain</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown mx-2">
             <a class="nav-link" aria-current="page" href="#" id="navbarDropdownMenuLink3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Who we are <i class="fas fa-angle-down"></i></a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+            <ul class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdownMenuLink3">
               <li><a class="dropdown-item" href="#">About us</a></li>
               <li><a class="dropdown-item" href="#">Blog</a></li>
             </ul>
@@ -41,9 +41,10 @@
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-header btn-md btn-dark me-2 rounded-pill" %>
           <% else %>
             <button type="button" class="btn btn-header btn-md btn-dark me-2 rounded-pill dropdown-toggle" type="button" id="dropdownLoginButton" data-bs-toggle="dropdown" aria-expanded="false"> Login</button>
-            <ul class="dropdown-menu dropdown-menu-dark drop-login" aria-labelledby="dropdownLoginButton">
+            <ul class="dropdown-menu dropdown-menu-dark drop-login animate slideIn" aria-labelledby="dropdownLoginButton">
               <li><%= link_to "as Admin", new_admin_session_path, class:"dropdown-item"%></li>
               <li><%= link_to "as Broker", new_broker_session_path, class:"dropdown-item"%></li>
+              <li><%= link_to "as Buyer", new_buyer_session_path, class:"dropdown-item"%></li>
             </ul>
           <% end %>
       </div>

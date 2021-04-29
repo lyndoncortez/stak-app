@@ -1,33 +1,38 @@
-<div class="form-signin mx-auto p-5">
-    <h2 class ="mb-3 fw-normal text-center"> Admin Login</h2>
-
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-inputs">
-        <div class="mb-3 d-flex justify-content-center">
-          <%= f.input :email,
-                      required: false,
-                      autofocus: true,
-                      placeholder: 'Email',
-                      label: false,
-                      input_html: { autocomplete: "email" } %>
-        </div>
-        <div class="mb-3 d-flex justify-content-center">
-          <%= f.input :password,
-                      required: false,
-                      placeholder: 'Password',
-                      label: false,
-                      input_html: { autocomplete: "current-password" } %>
-        </div>
-        <div class="mb-3 d-flex justify-content-center w-100">
-          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-        </div>
-          
-        
-        <div class="form-actions mb-2 d-flex justify-content-center">
-          <%= f.button :submit, "Log in", :class => 'btn btn-sm btn-primary' %>
-        </div>
+<div class="container pt-5 mb-5">
+  <div class="card mt-5 login-card mx-auto">
+    <div class="card-body">
+      <div class="form-signin mx-auto">
+        <h4 class ="mb-4 fw-bold text-center"><%= resource.class.model_name %> Login</h4>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-inputs">
+            <div class="mb-3 d-flex justify-content-center">
+              <%= f.input :email,
+                          required: false,
+                          autofocus: true,
+                          placeholder: 'Email',
+                          label: false,
+                          input_html: { autocomplete: "email" } %>
+            </div>
+            <div class="mb-3 d-flex justify-content-center">
+              <%= f.input :password,
+                          required: false,
+                          placeholder: 'Password',
+                          label: false,
+                          input_html: { autocomplete: "current-password" } %>
+            </div>
+            <div class="mb-3 d-flex text-start ms-5 mb-4 w-100 w-100">
+              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            </div>
+            <div class="form-actions mb-2 d-flex justify-content-center">
+              <%= f.button :submit, "Log in", :class => 'btn btn-md btn-primary fs-6 fw-bold' %>
+            </div>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
       </div>
-    <% end %>
-    <%= render "devise/shared/links" %>
-
+    </div>
   </div>
+</div>
+<div class="row mt-5 align-items-center">
+  <img src=<%= asset_path("admin-wave.svg") %> class="admin-wave"/>
+</div>

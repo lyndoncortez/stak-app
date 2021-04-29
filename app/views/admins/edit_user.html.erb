@@ -1,4 +1,4 @@
-<%= render partial: 'shared/flash' %>
+
 <div class="bg-white mt-5 mb-5 edit-card">
   <div class="row">
     <div class="col-md-3 border-right">
@@ -31,7 +31,7 @@
             </div>
             <div class="mb-3 d-flex justify-content-center">
               <%= f.input :password,
-                          placeholder: 'Change Password',
+                          placeholder: 'Enter your current password',
                           hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                           autocomplete: "new-password" %>
             </div>

@@ -38,6 +38,10 @@ class HomeController < ApplicationController
     @stocks = current_user.stocks
   end
 
+  def buyer_show_stocks
+    @buyer_stocks = current_user.user_stocks
+  end
+
   def transactions
     case current_user.type
     when 'Broker'

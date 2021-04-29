@@ -1,0 +1,45 @@
+<div class="d-flex flex-column dashboard">
+  <h1>My Stocks</h1>
+  <div class="w-50 mt-3 mb-4">
+    <%= form_with method: :post, url: stocks_create_path , local:true do |f| %>
+    <div class=" input-group input-group-sm">
+      <%= f.text_field :symbol, :class => 'form-control search-bar fs-5 ps-3', placeholder: 'Search by stock' %>
+      <span class="input-group-text bg-dark border-dark" id="basic-addon2">
+      <%= f.button :button, :class => 'btn btn-sm' do %>
+        <lord-icon
+          src="https://cdn.lordicon.com/msoeawqm.json"
+          trigger="hover"
+          colors="primary:#ffffff,secondary:#16c72e"
+          stroke="100"
+          scale="64"
+          style="width:32px;height:32px">
+        </lord-icon>
+      <% end %>
+      </span>
+    </div>
+    <% end %>
+  </div>
+  <div class="mt-2">
+    <%= link_to home_buyer_portfolio_path, :class => "mt-3 text-start fs-4" do %>
+      <i class="fas fa-arrow-left text-dark"></i>
+    <% end %>
+  </div>
+  <div class="row row-cols-1 row-cols-md-4 g-4 mt-4">
+    <% @buyer_stocks.each do | stock | %>
+    <div class="col mb-3">
+      <div class="card text-white bg-dark stocks-card">
+        <div class="card-body">
+          <h3 class="card-title stocks-title mb-0"><a href="<%= stocks_show_path(stock.id) %>" class="stretched-link"></a><%= stock.symbol.upcase %> </h3>
+          <small><%= stock.name %></small>
+          <h5 class="card-text mt-4 fs-4"><%= number_to_currency(stock.latest_price) %></h5>
+          <div class="row">
+            <div class="col">
+              <p class="stock-change stock-<%= stock.percent.include?('-') ? 'loss' : 'gain'  %> mb-0"><%= number_to_currency(stock.change) %> (<%= stock.percent %>) <i class="fas fa-caret-<%= stock.percent.include?('-') ? 'down' : 'up'  %>"></i></p><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

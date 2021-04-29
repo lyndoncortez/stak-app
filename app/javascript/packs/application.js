@@ -14,3 +14,7 @@ window.jQuery = window.$ = require("jquery");
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
+
+$(document).on("click", "#buy-broker-btn", function () {
+  $("#broker").show();
+});

@@ -48,6 +48,30 @@ class StocksController < ApplicationController
     redirect_to stocks_show_path(@stock)
   end
 
+  def buyer_new
+    @user_stock = UserStock.find(user_id_params)
+    @stock = @user_stock.stock
+    @broker = @user_stock.user
+  end
+
+  def buyer_create
+    @user_stock = UserStock.find(user_id_params)
+    @stock = @user_stock.stock
+    @broker = @user_stock.user
+    @buyer_stock = BuyerStock.create(buyer_stock_params)
+    @buyer_stock.user_id = current_user.id
+    @buyer_stock.user_stock_id = @user_stock.id
+    if @buyer_stock.save
+      @transaction = current_user.transactions.create(stock_id: @stock.id, broker_id: @broker.id, quantity: @buyer_stock.quantity,
+                                                      price: @buyer_stock.price, total: (@buyer_stock.quantity * @buyer_stock.price))
+      @transaction.save
+      flash[:notice] = "Successfully purchased #{@buyer_stock.quantity} shares of #{@stock.symbol.upcase}"
+      redirect_to home_transactions_path
+    else
+      render :buyer_new
+    end
+  end
+
   private
 
   def stock_params
