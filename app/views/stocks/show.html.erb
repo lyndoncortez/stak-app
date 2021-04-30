@@ -239,7 +239,7 @@
                   <tr>
                     <th scope="row"><%= index + 1 %></th>
                     <td><%= broker_stock.user.name %></td>
-                    <td><%= link_to "Buy", stocks_buyer_new_path(broker_stock, @stock, broker_stock.user), method: :get, class: 'btn btn-success btn-sm fw-bold' %></td>
+                    <td><%= link_to "Buy", stocks_buy_path(broker_stock, @stock, broker_stock.user), method: :get, class: 'btn btn-success btn-sm fw-bold' %></td>
                   </tr>
                 </tbody>
                 <% end %>

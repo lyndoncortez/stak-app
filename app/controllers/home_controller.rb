@@ -28,10 +28,13 @@ class HomeController < ApplicationController
     @ford_logo = @client.logo('F')
     @intel = @client.quote('INTC')
     @intel_logo = @client.logo('INTC')
+    @transactions = Transaction.where(broker_id: current_user.id)
   end
 
   def buyer_portfolio
     @buyer_stocks = current_user.user_stocks
+    @buyer_total_stocks = BuyerStock.all
+    @transactions = current_user.transactions
   end
 
   def broker_show_stocks

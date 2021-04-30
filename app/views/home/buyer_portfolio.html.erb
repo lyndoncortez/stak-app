@@ -19,7 +19,7 @@
     </div>
   <% end %>
 </div>
-<div class="row justify-content-md-center px-1 pt-1 g-5">
+<div class="row justify-content-md-center px-1 pt-1 g-5 buyer-row mt-4">
   <div class="col-12 col-sm-12 col-xl-4">
     <div class="card buyer-card shadow-sm">
       <div class="card-body ps-4">
@@ -32,7 +32,7 @@
             </div>
             <div class="d-block">
               <label class="mb-0">Total Stocks</label>
-              <h4 class="mb-0 fw-bold"><%= @buyer_stocks.count %></h4>
+                <h4 class="mb-0 fw-bold"><%= @buyer_total_stocks.distinct.count(:user_stock_id) %></h4>
             </div>
           </div>
           <div class="d-flex align-items-center pt-3">
@@ -41,11 +41,36 @@
             </div>
             <div class="d-block">
               <label class="mb-0">Total Earnings</label>
-              <h4 class="mb-0 fw-bold">$34.00</h4>
+              <h4 class="mb-0 fw-bold"><%= number_to_currency(@transactions.sum(:total)) %></h4>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="col-12 col-sm-12 col-xl-4">
+    <div class="card buyer-card shadow-sm">
+      <div class="card-body ps-4">
+        <h2 class="h5"><a href="<%= home_transactions_path %>" class="text-dark stretched-link"></a>Transactions</h2>
+        <div class="d-block broker-card">
+          <div class="d-flex align-items-center pt-3 me-5">
+            <div class="d-block">
+              <div class="h6 fw-normal text-gray mb-2">
+                Total orders
+              </div>
+              <h2 class="h3 fw-bold"><%= @transactions.count %></h2>
+              <div class="small mt-2">
+                <span class="fas fa-angle-up text-success"></span>
+                <span class="text-success fw-bold">18.2%</span>
+              </div>
+              <div class="small mt-2">
+                <span class="fw-normal">As of today, <%= Date.today %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <hr class="mt-5">
 </div>

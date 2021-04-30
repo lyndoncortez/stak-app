@@ -48,7 +48,7 @@ class StocksController < ApplicationController
     redirect_to stocks_show_path(@stock)
   end
 
-  def buyer_new
+  def buy
     @user_stock = UserStock.find(user_id_params)
     @stock = @user_stock.stock
     @broker = @user_stock.user
@@ -65,7 +65,7 @@ class StocksController < ApplicationController
       @transaction = current_user.transactions.create(stock_id: @stock.id, broker_id: @broker.id, quantity: @buyer_stock.quantity,
                                                       price: @buyer_stock.price, total: (@buyer_stock.quantity * @buyer_stock.price))
       @transaction.save
-      flash[:notice] = "Successfully purchased #{@buyer_stock.quantity} shares of #{@stock.symbol.upcase}"
+      flash[:notice] = "You have successfully purchased #{@buyer_stock.quantity} shares of #{@stock.symbol.upcase}"
       redirect_to home_transactions_path
     else
       render :buyer_new
@@ -84,5 +84,9 @@ class StocksController < ApplicationController
 
   def user_id_params
     params[:id]
+  end
+
+  def buyer_stock_params
+    params.permit(:user_id, :user_stock_id, :quantity, :price)
   end
 end

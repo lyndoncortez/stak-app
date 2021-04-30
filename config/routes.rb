@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'stocks/show/:id' => 'stocks#show', as: 'stocks_show'
   get 'stocks/chart' => 'stocks#chart', as: 'stocks_chart'
   put 'stocks/broker/add/:id' => 'stocks#broker_add', as: 'stocks_broker_add'
-  get 'stocks/buyer/new/:id' => 'stocks#buyer_new', as: 'stocks_buyer_new'
+  get 'stocks/buyer/new/:id' => 'stocks#buy', as: 'stocks_buy'
   post 'stocks/buyer/create/:id' => 'stocks#buyer_create', as: 'stocks_buyer_create'
 
   get 'admins/index'

@@ -25,21 +25,24 @@
     <% end %>
   </div>
   <div class="row row-cols-1 row-cols-md-4 g-4 mt-4">
-    <% @buyer_stocks.each do | stock | %>
-    <div class="col mb-3">
-      <div class="card text-white bg-dark stocks-card">
-        <div class="card-body">
-          <h3 class="card-title stocks-title mb-0"><a href="<%= stocks_show_path(stock.id) %>" class="stretched-link"></a><%= stock.symbol.upcase %> </h3>
-          <small><%= stock.name %></small>
-          <h5 class="card-text mt-4 fs-4"><%= number_to_currency(stock.latest_price) %></h5>
-          <div class="row">
-            <div class="col">
-              <p class="stock-change stock-<%= stock.percent.include?('-') ? 'loss' : 'gain'  %> mb-0"><%= number_to_currency(stock.change) %> (<%= stock.percent %>) <i class="fas fa-caret-<%= stock.percent.include?('-') ? 'down' : 'up'  %>"></i></p><br>
+    <% @buyer_stocks.group(:stock_id).sum(:quantity).each do |id, sum| %>
+      <% stock = Stock.find(id) %>
+      <div class="col mb-3">
+        <div class="card text-white bg-dark stocks-card">
+          <div class="card-body">
+            <h3 class="card-title stocks-title mb-0"><a href="<%= stocks_show_path(stock.id) %>" class="stretched-link"></a><%= stock.symbol.upcase %> </h3>
+            <small><%= stock.name %></small>
+            <h5 class="card-text mt-4 fs-4"><%= number_to_currency(stock.latest_price) %></h5>
+            <div class="row">
+              <div class="col">
+                <p class="stock-change stock-<%= stock.percent.include?('-') ? 'loss' : 'gain'  %> mb-0"><%= number_to_currency(stock.change) %> (<%= stock.percent %>) <i class="fas fa-caret-<%= stock.percent.include?('-') ? 'down' : 'up'  %>"></i></p><br>
+                <p class="m-0">Total Shares: <%= sum %></p>
+                <p>Current Value: <%= number_to_currency(stock.latest_price.to_f * sum) %></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     <% end %>
   </div>
 </div>
