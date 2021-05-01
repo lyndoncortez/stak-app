@@ -1,4 +1,4 @@
-<div class="container pt-5 mb-5">
+<div class="container pt-5">
   <div class="card mt-5 login-card mx-auto">
     <div class="card-body">
       <div class="form-signin mx-auto">
@@ -45,6 +45,46 @@
     </div>
   </div>
 </div>
+<% if resource.class.model_name != "Admin" %>
+  <div class="row">
+    <div class="col-4 text-center">
+      <lord-icon
+        src="https://cdn.lordicon.com/yyecuati.json"
+        trigger="loop"
+        <% if resource.class.model_name == "Buyer" %>
+          colors="primary:#30e849,secondary:#109121"
+        <% elsif resource.class.model_name == "Broker" %>
+          colors="primary:#0d6efd,secondary:#000000"
+        <% end %>
+        style="width:100px;height:100px">
+      </lord-icon>
+    </div>
+    <div class="col-4 text-center">
+      <lord-icon
+        src="https://cdn.lordicon.com/rgyftmhc.json"
+        trigger="loop"
+        <% if resource.class.model_name == "Buyer" %>
+          colors="primary:#30e849,secondary:#109121"
+        <% elsif resource.class.model_name == "Broker" %>
+          colors="primary:#0d6efd,secondary:#000000"
+        <% end %>
+        style="width:100px;height:100px">
+      </lord-icon>
+    </div>
+    <div class="col-4 text-center">
+      <lord-icon
+        src="https://cdn.lordicon.com/cjieiyzp.json"
+        trigger="loop"
+        <% if resource.class.model_name == "Buyer" %>
+          colors="primary:#30e849,secondary:#109121"
+        <% elsif resource.class.model_name == "Broker" %>
+          colors="primary:#0d6efd,secondary:#000000"
+        <% end %>
+        style="width:100px;height:100px">
+      </lord-icon>
+    </div>
+  </div>
+<% end %>
 <div class="row mt-5 align-items-center">
   <% if resource.class.model_name == "Buyer" %>
     <img src=<%= asset_path("buyer-wave.svg") %> class="wave-img"/>

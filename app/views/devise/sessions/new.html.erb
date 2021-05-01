@@ -47,7 +47,11 @@
      <lord-icon
       src="https://cdn.lordicon.com/yyecuati.json"
       trigger="loop"
-      colors="primary:#0d6efd,secondary:#000000"
+      <% if resource.class.model_name == "Buyer" %>
+        colors="primary:#30e849,secondary:#109121"
+      <% elsif resource.class.model_name == "Broker" %>
+        colors="primary:#0d6efd,secondary:#000000"
+      <% end %>
       style="width:100px;height:100px">
     </lord-icon>
   </div>
@@ -55,7 +59,11 @@
      <lord-icon
       src="https://cdn.lordicon.com/rgyftmhc.json"
       trigger="loop"
-      colors="primary:#0d6efd,secondary:#242424"
+      <% if resource.class.model_name == "Buyer" %>
+        colors="primary:#30e849,secondary:#109121"
+      <% elsif resource.class.model_name == "Broker" %>
+        colors="primary:#0d6efd,secondary:#000000"
+      <% end %>
       style="width:100px;height:100px">
     </lord-icon>
   </div>
@@ -63,7 +71,11 @@
      <lord-icon
       src="https://cdn.lordicon.com/cjieiyzp.json"
       trigger="loop"
-      colors="primary:#0d6efd,secondary:#242424"
+      <% if resource.class.model_name == "Buyer" %>
+        colors="primary:#30e849,secondary:#109121"
+      <% elsif resource.class.model_name == "Broker" %>
+        colors="primary:#0d6efd,secondary:#000000"
+      <% end %>
       style="width:100px;height:100px">
     </lord-icon>
   </div>
