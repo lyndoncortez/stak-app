@@ -1,43 +1,71 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<%= render "devise/shared/error_messages", resource: resource %>
+<div class="bg-white mt-5 mb-5 edit-card">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <div class="row">
+    <div class="col-md-3 border-right">
+      <div class="mt-3 ms-3">
+        <%= link_to root_path, :class => "text-start back-arrow" do %>
+          <i class="fas fa-arrow-left text-dark"></i>
+        <% end %>
+      </div>
+      <div class="align-items-center text-center p-3">
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar.variant(resize: "150x150!"), class:  "rounded-circle mt-3 mb-2" %>
+        <% else %>
+            <%= image_tag("default_profile.jpg", class: "rounded-circle mt-3 mb-2", height: '150', width: '150') %>
+        <% end %>
+        <div class="mt-2 mb-3 justify-content-center">
+          <%= f.label :avatar, "Edit Image", class: "btn btn-sm btn-photo border-secondary text-dark" %>
+          <%= f.file_field :avatar, class: "input_file" %> </div>
+          <span class="font-weight-bold"><%= @user.name %></span><br>
+          <span class="text-black-50"><%= @user.email %></span>
+          <span></span>
+        </div>
+      </div>
+    <div class="col-md-5 border-right">
+        <div class="mb-3 d-flex justify-content-center mt-5">
+          <%= f.text_field :name,
+                            required: true,
+                            placeholder: 'Name',
+                            class: 'form-control',
+                            input_html: { autocomplete: "name" }%>
+        </div>
+        <div class="mb-3 d-flex justify-content-center">
+          <%= f.email_field :email,
+                              required: true,
+                              placeholder: 'Email',
+                              class: 'form-control',
+                              input_html: { autocomplete: "email" }%>
+        </div>
+        <div class="mb-3 d-flex justify-content-center">
+          <%= f.password_field :password,
+                              placeholder: 'Change Password',
+                              class: 'form-control',
+                              hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                              autocomplete: "new-password" %>
+        </div>
+        <div class="mb-3 d-flex justify-content-center">
+          <%= f.password_field :password_confirmation, placeholder: 'Confirm Password', class: 'form-control',
+                              autocomplete: "new-password" %>
+        </div>
+        <div class="mb-3 d-flex justify-content-center">
+          <i>(we need your current password to confirm your changes)</i><br>
+        </div>
+        <div class="mb-3 d-flex justify-content-center">
+          <%= f.password_field :current_password, placeholder: 'Password', autocomplete: "current-password", class: 'form-control' %>
+        </div>
+        <div class="form-actions mb-3 mt-3 d-flex justify-content-center p-1">
+          <%= f.submit "Update", :class => 'btn btn-action btn-md btn-warning' %>
+        </div>
+    </div>
+    <div class="col-md-4 p-3 pt-4">
+      <div class="mb-1 mt-5 d-flex justify-content-center">
+        <h5>Cancel account</h5>
+      </div>
+      <div class="mb-3 d-flex justify-content-center">
+        <%= link_to "Cancel my account", cancel_user_registration_path, data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-sm btn-danger" %></p>
+      </div>
+    </div>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

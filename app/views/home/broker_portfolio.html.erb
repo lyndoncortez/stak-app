@@ -1,4 +1,4 @@
-<div class="d-flex flex-column dashboard">
+<div class="d-flex flex-column dashboard animate slideIn">
   <h1><%= current_user.name%>'s Portfolio</h1>
   <div class="w-50 mt-3 mb-4">
   <%= form_with method: :post, url: stocks_create_path , local:true do |f| %>

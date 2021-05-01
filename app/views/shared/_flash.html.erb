@@ -1,17 +1,9 @@
-<% if notice%>
-  <div class="alert alert-warning alert-dismissible fade show alert-fixed w-50 mx-auto">
-    <%= notice %>
+<% flash.each do |name, msg| %>
+  <div class="alert alert-<%= name %> alert-dismissible fade show alert-fixed w-25 mx-auto">
+    <%= msg %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% end %>
-
-<% if alert%>
-  <div class="alert alert-warning alert-dismissible fade show alert-fixed w-50 mx-auto">
-    <%= alert %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-<% end %>
-
 
 <script type="text/javascript">
   setTimeout(function(){

@@ -426,7 +426,10 @@ abbr[title] {
 
 .btn-primary:hover,
 .btn-header:hover,
-.btn-success:hover {
+.btn-success:hover,
+.btn-warning:hover,
+.btn-danger:hover,
+.btn-photo:hover {
   transform: translateY(-1px);
 }
 
@@ -504,4 +507,20 @@ abbr[title] {
 .buyer-row {
   margin-left: 0 !important;
   margin-right: 0 !important;
+}
+
+.input_file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.alert-alert {
+  @extend .alert-warning;
+}
+.alert-notice {
+  @extend .alert-success;
 }
