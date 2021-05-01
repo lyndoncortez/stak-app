@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_one_attached :avatar
   after_commit :avatar, on: %i[create update]
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
