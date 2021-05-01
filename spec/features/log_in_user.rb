@@ -32,4 +32,20 @@ RSpec.describe 'Log in user', type: :system do
       expect(page).to have_current_path(home_broker_portfolio_path)
     end
   end
+
+  describe 'log in as buyer' do
+    let(:buyer) { create :buyer }
+
+    before do
+      buyer.confirm
+    end
+
+    it 'signs the buyer in' do
+      visit new_buyer_session_path
+      fill_in 'Email', with: buyer.email
+      fill_in 'Password', with: buyer.password
+      click_button 'Log in'
+      expect(page).to have_current_path(home_buyer_portfolio_path)
+    end
+  end
 end

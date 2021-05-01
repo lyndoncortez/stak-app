@@ -56,3 +56,9 @@ Rails/HasAndBelongsToMany:
 
 Rails/InverseOf:
   Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
