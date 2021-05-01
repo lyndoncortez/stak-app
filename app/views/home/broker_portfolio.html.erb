@@ -74,57 +74,24 @@
     </div>
     <div class="col-12 col-sm-12 col-xl-4">
       <div class="col-12 px-0 mb-4">
-        <div class="card portfolio-card shadow-sm">
+        <div class="card shadow-sm">
           <div class="card-body ps-4">
-            <h2 class="h5">Stocks</h2>
-            <div class="d-flex align-items-center justify-content-between border-bottom border-light mt-4">
+            <h2 class="h5">Most Active</h2>
+            <% @top_list.each do | stock | %> 
+            <div class="d-flex align-items-center justify-content-between border-bottom border-light mt-4 pe-4 ps-1 py-2">
               <div>
                 <h6 class="mb-0">
-                  <span class="icon icon-xs me-3">
-                    <img src="<%= @apple_logo.url %>" height="30" >
-                  </span>
-                  <%= @apple.symbol %>
+                  <%= stock.symbol %>
                 </h6>
-                <div class="small card-stats text-<%= @apple.change_percent_s.include?('-') ? 'danger' : 'success' %>">
-                  <%= @apple.change_percent_s %><i class="fas fa-caret-<%= @apple.change_percent_s.include?('-') ? 'down' : 'up' %>"></i>
+                <div class="small card-stats text-<%= stock.change_percent_s.include?('-') ? 'danger' : 'success' %>">
+                  <%= stock.change_percent_s %><i class="fas fa-caret-<%= stock.change_percent_s.include?('-') ? 'down' : 'up' %>"></i>
                 </div>
               </div>
               <div>
-                <span class="fw-bold"><%= number_to_currency(@apple.latest_price) %></span>
+                <span class="fw-bold"><%= number_to_currency(stock.latest_price) %></span>
               </div>
             </div>
-           <div class="d-flex align-items-center justify-content-between border-bottom border-light pt-3">
-              <div>
-                <h6 class="mb-0">
-                  <span class="icon icon-xs me-3">
-                    <img src="<%= @ford_logo.url %>" height="30" >
-                  </span>
-                  <%= @ford.symbol %>
-                </h6>
-                <div class="small card-stats text-<%= @ford.change_percent_s.include?('-') ? 'danger' : 'success' %>">
-                  <%= @ford.change_percent_s %><i class="fas fa-caret-<%= @ford.change_percent_s.include?('-') ? 'down' : 'up' %>"></i>
-                </div>
-              </div>
-              <div>
-                <span class="fw-bold"><%= number_to_currency(@ford.latest_price) %></span>
-              </div>
-            </div>
-            <div class="d-flex align-items-center justify-content-between border-bottom border-light pt-3 mb-2">
-              <div>
-                <h6 class="mb-0">
-                  <span class="icon icon-xs me-3">
-                    <img src="<%= @intel_logo.url %>" height="30" >
-                  </span>
-                  <%= @intel.symbol %>
-                </h6>
-                <div class="small card-stats text-<%= @intel.change_percent_s.include?('-') ? 'danger' : 'success' %>">
-                  <%= @intel.change_percent_s %><i class="fas fa-caret-<%= @intel.change_percent_s.include?('-') ? 'down' : 'up' %>"></i>
-                </div>
-              </div>
-              <div>
-                <span class="fw-bold"><%= number_to_currency(@intel.latest_price) %></span>
-              </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>

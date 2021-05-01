@@ -34,6 +34,8 @@ class StocksController < ApplicationController
 
   def show
     @stock = Stock.find(stock_id_params)
+    @news = @client.news(@stock.symbol)
+    @newsList = [ @news.fifth, @news.second, @news.last ]
     @gain_loss = if @stock.percent.include?('-')
                    'loss'
                  else

@@ -22,12 +22,7 @@ class HomeController < ApplicationController
   def broker_portfolio
     @stocks = current_user.stocks
     @stock = Stock.new
-    @apple = @client.quote('AAPL')
-    @apple_logo = @client.logo('AAPL')
-    @ford = @client.quote('F')
-    @ford_logo = @client.logo('F')
-    @intel = @client.quote('INTC')
-    @intel_logo = @client.logo('INTC')
+    @top_list = @client.stock_market_list(:mostactive)
     @transactions = Transaction.where(broker_id: current_user.id)
   end
 

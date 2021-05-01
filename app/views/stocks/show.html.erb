@@ -19,7 +19,7 @@
     </div>
     <% end %>
   </div>
-  <div class="card  animate slideIn"> <!--show-card -->
+  <div class="card animate slideIn mb-5"> <!--show-card -->
     <div class="card-body px-5 pt-4">
       <% if broker_signed_in? %>
         <div class="mb-4">
@@ -249,5 +249,32 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <h1>News</h1>
+  <div class="row mt-4 mb-5">
+    <% @newsList.each do | stock_news | %>
+    <div class="col-4">
+      <div class="card animate slideIn">
+        <div class="card-body p-4">
+          <h5 class="card-title"><%= stock_news.headline %></h5>
+          <p class="card-text mt-3 text-secondary">
+            <% if stock_news.summary.length > 250 %>
+              <%= stock_news.summary.truncate(500) %> 
+              <%= link_to 'Read More', '', class: "read-more-#{@stock.id} fw-bold" %>
+              <script>
+                $('.read-more-<%= @stock.id %>').on('click', function(e) {
+                  e.preventDefault()
+                  $(this).parent().html('<%= escape_javascript stock_news.summary %>')
+                })
+              </script>
+            <% else %>
+              <%= stock_news.summary %>
+            <% end %>
+          </p>
+          <p class="card-text"><small class="text-muted"><%= stock_news.datetime %></small></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>

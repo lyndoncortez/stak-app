@@ -41,7 +41,10 @@
             </div>
             <div class="d-block">
               <label class="mb-0">Total Earnings</label>
-              <h4 class="mb-0 fw-bold"><%= number_to_currency(@transactions.sum(:total)) %></h4>
+              <% @buyer_stocks.group(:stock_id).sum(:quantity).each do |id, sum| %>
+                <% stock = Stock.find(id) %>
+              <h4 class="mb-0 fw-bold"><%= number_to_currency(stock.latest_price.to_f * sum) %></h4>
+              <% end %>
             </div>
           </div>
         </div>
