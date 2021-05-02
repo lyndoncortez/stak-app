@@ -13,33 +13,39 @@
       </div>
     </div>
     <div class="col-md-5 border-right">
-      <%= simple_form_for(:user, url: admins_new_user_path, method: :post, local: true) do |f| %>
-        <div class="form-inputs p-3 pt-4">
-          <div class="mb-3 d-flex justify-content-center mt-5">
-            <%= f.input :name,
+      <%= form_with method: :post, scope: :user, url: admins_new_user_path , local:true do |f| %>
+        <div class="p-3 pt-4">
+          <div class="mt-5 d-flex justify-content-center">
+            <h5>User Information</h5>
+          </div>
+          <div class="mb-3 mt-3 form-floating">
+            <%= f.text_field :name,
                         required: true,
                         placeholder: 'Enter your Name',
-                        input_html: { autocomplete: "name" }%>
-            </div>
-            <div class="mb-3 d-flex justify-content-center">
-              <%= f.input :email,
+                        class: 'form-control new-form' %>
+            <%= f.label :name %>
+          </div>
+          <div class="mb-3 mx-auto form-floating">
+            <%= f.text_field :email,
                           required: true,
                           placeholder: 'Enter your Email',
-                          input_html: { autocomplete: "email" }%>
-            </div>
-            <div class="mb-3 d-flex justify-content-center">
-              <%= f.input :password,
+                          class: 'form-control new-form' %>
+            <%= f.label :email %>
+          </div>
+          <div class="mb-3 mx-auto form-floating">
+            <%= f.text_field :password,
                           placeholder: 'Enter a Password',
-                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                          class: 'form-control new-form' %>
+            <%= f.label :password %>
+          </div>
+          <div class="mb-3 mx-auto form-floating">
+            <%= f.text_field :password_confirmation, placeholder: 'Confirm Password', class: 'form-control new-form',
                           autocomplete: "new-password" %>
-            </div>
-            <div class="mb-3 d-flex justify-content-center">
-              <%= f.input :password_confirmation, placeholder: 'Confirm Password',
-                          autocomplete: "new-password" %>
-            </div>
-            <div class="form-actions mb-3 mt-3 d-flex justify-content-center p-1">
-              <%= f.button :submit, "Create", :class => 'btn btn-action btn-md btn-dark' %>
-            </div>
+            <%= f.label :password_confirmation %>
+          </div>
+          <div class="form-actions mb-3 mt-3 d-flex justify-content-center p-1">
+            <%= f.submit "Create", :class => 'btn btn-action btn-md btn-dark' %>
+          </div>
           </div> 
         </div>
         <div class="col-md-4 p-3 pt-4">
@@ -47,7 +53,7 @@
             <h5>Account Type</h5>
           </div>
           <div class="mb-3 d-flex justify-content-center w-75 mx-auto">
-            <%= f.select :type, Admin::USER_TYPE_OPTIONS, {}, required: true, class: 'form-select' %>
+            <%= f.select :type, Admin::USER_TYPE_OPTIONS, class: 'form-select' %>
           </div>
         </div>
       <% end %>

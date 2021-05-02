@@ -523,3 +523,7 @@ abbr[title] {
 .alert-notice {
   @extend .alert-success;
 }
+
+.new-form {
+  width: 100% !important;
+}

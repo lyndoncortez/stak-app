@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Show all users', type: :system do
-  describe 'show by clicking the card' do
+  describe 'clicking the card' do
     let(:user) { create :user }
 
     before do
@@ -19,7 +19,7 @@ RSpec.describe 'Show all users', type: :system do
     end
   end
 
-  describe 'show by clicking the link' do
+  describe 'clicking the link' do
     let(:user) { create :user }
 
     before do

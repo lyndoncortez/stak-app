@@ -32,7 +32,7 @@
       <td><%= user.email %></td>
       <td><span class="text-warning"><%= "Pending" unless user.approved == true%> </span></td>
       <td class="text-center">
-        <%= link_to 'View User', admins_show_user_path(user.id), :class => "btn btn-action btn-sm btn-secondary text-white" %>
+        <%= link_to 'View User', admins_show_user_path(user.id), :class => "btn btn-action btn-sm btn-secondary text-white", :id => 'viewUserId' %>
       </td>
       <td class="text-center">
         <%= link_to 'Edit User', admins_edit_user_path(user.id), :class => "btn btn-action btn-sm btn-warning text-dark" %>
