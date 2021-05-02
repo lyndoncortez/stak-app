@@ -1,9 +1,13 @@
 class Admin < User
-  after_create :send_admin_mail
-
-  def send_admin_mail
-    AdminMailer.new_user_waiting_for_approval(self).deliver
-  end
+  before_create :approve_admin, :confirm_admin
 
   USER_TYPE_OPTIONS = %w[Admin Buyer Broker].freeze
+
+  def approve_admin
+    self.approved = true
+  end
+
+  def confirm_admin
+    skip_confirmation!
+  end
 end
