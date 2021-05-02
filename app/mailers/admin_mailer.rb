@@ -1,5 +1,5 @@
 class AdminMailer < ApplicationMailer
-  default from: 'admin@stak.com'
+  default from: 'team@stak.com'
   layout 'mailer'
 
   def new_user_waiting_for_approval(user)
