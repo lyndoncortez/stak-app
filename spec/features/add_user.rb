@@ -14,11 +14,11 @@ RSpec.describe 'Add User', type: :system do
       fill_in 'Password', with: user.password
       click_button 'Log in'
       find('#addUserId').click
-      fill_in 'Name', :with => 'Goku'
-      fill_in 'Email', :with => 'goku@dragonball.com'
-      fill_in 'user_password', :with => 'songoku'
-      fill_in 'user_password_confirmation', :with => 'songoku'
-      select('Broker', :from => 'user_type')
+      fill_in 'Name', with: 'Goku'
+      fill_in 'Email', with: 'goku@dragonball.com'
+      fill_in 'user_password', with: 'songoku'
+      fill_in 'user_password_confirmation', with: 'songoku'
+      select('Broker', from: 'user_type')
       click_button 'Create'
       sleep(3)
       expect(page).to have_current_path(admins_index_path)
