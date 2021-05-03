@@ -50,7 +50,7 @@ class AdminsController < ApplicationController
     @email = user.email
     if user.save
       flash[:success] = "#{user.name} approved."
-      AdminMailer.account_approved(@email).deliver_now
+      AdminMailer.account_approved(user).deliver_now
     else
       flash[:danger] = 'User approval failed.'
     end
