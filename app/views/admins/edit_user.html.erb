@@ -17,7 +17,7 @@
           <%= image_tag("default_profile.jpg", class: "rounded-circle mt-3 mb-2", height: '150', width: '150') %>
         <% end %>
         <div class="mt-2 mb-3 justify-content-center">
-          <%= f.label :avatar, "Edit Image", class: "btn btn-sm btn-photo border-secondary text-dark" %>
+          <%= f.label :avatar, "Edit Image", class: "btn btn-sm btn-secondary btn-photo border-secondary text-dark disabled" %>
           <%= f.file_field :avatar, class: "input_file" %> </div>
           <span class="font-weight-bold"><%= @user.name %></span><br>
           <span class="text-black-50"><%= @user.email %></span>
