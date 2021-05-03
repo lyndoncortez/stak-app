@@ -41,7 +41,7 @@
               </div>
               <div class="d-block">
                 <label class="mb-0">No. of Buyers</label>
-                <h4 class="mb-0 fw-bold">2</h4>
+                <h4 class="mb-0 fw-bold"><%= @transactions.distinct.count(:user_id) %></h4>
               </div>
             </div>
           </div>

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   put 'stocks/broker/add/:id' => 'stocks#broker_add', as: 'stocks_broker_add'
   get 'stocks/buyer/new/:id' => 'stocks#buy', as: 'stocks_buy'
   post 'stocks/buyer/create/:id' => 'stocks#buyer_create', as: 'stocks_buyer_create'
+  delete 'stocks/show/:id' => 'stocks#broker_delete', as: 'stocks_broker_delete'
 
   get 'admins/index'
   get 'admins/new/user'  => 'admins#new_user',   as: 'admins_new_user'

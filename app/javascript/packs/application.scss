@@ -527,3 +527,11 @@ abbr[title] {
 .new-form {
   width: 100% !important;
 }
+
+input#symbol {
+  text-transform: uppercase;
+}
+
+::-webkit-input-placeholder {
+  text-transform: initial;
+}
