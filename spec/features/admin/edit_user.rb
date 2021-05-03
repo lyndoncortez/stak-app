@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe 'Add User', type: :system do
-  describe 'clicking the add user button' do
+RSpec.describe 'Edit User', type: :system do
+  describe 'clicking the edit user button' do
     let(:user) { create :user }
 
     before do
       user.confirm
     end
 
-    it 'adds a user' do
+    it 'edits a user' do
       visit new_admin_session_path
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password

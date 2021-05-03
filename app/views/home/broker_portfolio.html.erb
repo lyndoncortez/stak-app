@@ -4,7 +4,7 @@
   <%= form_with method: :post, url: stocks_create_path , local:true do |f| %>
   <div class=" input-group input-group-sm">
     <%= f.text_field :symbol, :class => 'form-control search-bar fs-5 ps-3', placeholder: 'Search by stock' %>
-    <span class="input-group-text bg-dark border-dark" id="basic-addon2">
+    <span class="input-group-text bg-dark border-dark" id="searchId">
     <%= f.button :button, :class => 'btn btn-sm' do %>
       <lord-icon
         src="https://cdn.lordicon.com/msoeawqm.json"
