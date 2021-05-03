@@ -1,6 +1,6 @@
 
 <div class="bg-white mt-5 mb-5 edit-card">
-  <%= simple_form_for(:user, url: admins_edit_user_path, method: :put, local: true) do |f| %>
+  <%= form_with method: :put, scope: :user, url: admins_edit_user_path, local:true do |f| %>
 
   <div class="row">
     <div class="col-md-3 border-right">
@@ -28,35 +28,21 @@
      
         <div class="form-inputs p-3 pt-4">
           <div class="mb-3 d-flex justify-content-center mt-5">
-            <%= f.input :name,
+            <%= f.text_field :name,
                         required: true,
                         placeholder: 'Name',
+                        class: 'form-control',
                         input_html: { autocomplete: "name" }%>
             </div>
             <div class="mb-3 d-flex justify-content-center">
-              <%= f.input :email,
+              <%= f.text_field :email,
                           required: true,
                           placeholder: 'Email',
+                          class: 'form-control',
                           input_html: { autocomplete: "email" }%>
             </div>
-            <div class="mb-3 d-flex justify-content-center">
-              <%= f.input :password,
-                          placeholder: 'Enter your current password',
-                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                          autocomplete: "new-password" %>
-            </div>
-            <div class="mb-3 d-flex justify-content-center">
-              <%= f.input :password_confirmation, placeholder: 'Confirm Password',
-                          autocomplete: "new-password" %>
-            </div>
-            <div class="mb-3 d-flex justify-content-center">
-              <i>(we need your current password to confirm your changes)</i><br>
-            </div>
-            <div class="mb-3 d-flex justify-content-center">
-              <%= f.password_field :current_password, placeholder: 'Password', autocomplete: "current-password", class: 'form-control' %>
-            </div>
             <div class="form-actions mb-3 mt-3 d-flex justify-content-center p-1">
-              <%= f.button :submit, "Edit", :class => 'btn btn-action btn-md btn-warning' %>
+              <%= f.submit "Edit", :class => 'btn btn-action btn-md btn-warning' %>
             </div>
           </div> 
         </div>
