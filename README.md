@@ -1,24 +1,20 @@
-# README
+# Stak
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A stock trading web application built with Ruby on Rails. Users can add, buy or sell stocks using [IEX API](https://iexcloud.io/docs/api/).
 
-Things you may want to cover:
+## Features
+* Single Table Inheritance for Users (Admin, Broker and Buyer)
+* Avatar for User profile
+* Admin Dashboard for Users approval
+* Confirmation and Registration Email
+* Rspec with Capybara for testing core functionalities
 
-* Ruby version
+## Screenshot
 
-* System dependencies
+💾 preview it here: [Stak App](http://stak-app.herokuapp.com/)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<br>
+<img src="https://github.com/lyndoncortez/stak-app/blob/main/app/assets/images/ladning_page.png?raw=true">
+<img src="https://github.com/lyndoncortez/stak-app/blob/main/app/assets/images/signup.png?raw=true">
+<img src="https://github.com/lyndoncortez/stak-app/blob/main/app/assets/images/show_stocks.png?raw=true">
+<img src="https://github.com/lyndoncortez/stak-app/blob/main/app/assets/images/search_stocks.png?raw=true">
